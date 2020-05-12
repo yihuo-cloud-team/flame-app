@@ -1,14 +1,20 @@
 <script>
 export default {
-  onLaunch: function() {
-    console.log("App Launch");
-  },
-  onShow: function() {
-    console.log("App Show");
-  },
-  onHide: function() {
-    console.log("App Hide");
-  }
+	onLaunch: function() {
+		console.log('App Launch');
+		// uni.clearStorageSync();
+		if(!uni.getStorageSync('jwt')){
+			uni.reLaunch({
+				url: '/pages/login/index',
+			});
+		}
+	},
+	onShow: function() {
+		console.log('App Show');
+	},
+	onHide: function() {
+		console.log('App Hide');
+	}
 };
 </script>
 

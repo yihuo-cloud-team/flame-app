@@ -1,0 +1,11 @@
+*{box-sizing: border-box;}
+#login {
+	padding: $page-padding;
+}
+
+#login /deep/ {
+	.popup{
+		background: #FFF;
+		padding: 20rpx;
+	}
+}
