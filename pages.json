@@ -1,14 +1,42 @@
 {
-	"pages": [{
-		"path": "pages/index/index",
-		"style": {
-			"navigationBarTitleText": "uni-ui基础项目"
+	"pages": [
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "uni-ui基础项目"
+			}
+		},
+		{
+			"path": "pages/user/info/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
-	}],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#007AFF",
 		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#333",
+		"selectedColor": "#1989fa",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/image/home.svg",
+				"selectedIconPath": "static/image/home_HL.svg",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/user/info/index",
+				"iconPath": "static/image/user.svg",
+				"selectedIconPath": "static/image/user.svg",
+				"text": "我的"
+			}
+		]
 	}
 }
