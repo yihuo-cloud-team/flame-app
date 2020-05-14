@@ -49,20 +49,17 @@
 		}
 	}
 </script>
-<style scoped>
+<style lang="scss" scoped>
 	.uni-list {
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
-		background-color: #ffffff;
+		background-color: $uni-bg-color;
 		position: relative;
 		flex-direction: column;
-		/* border-bottom-color: $uni-border-color;
- */
-		/* border-bottom-style: solid;
- */
-		/* border-bottom-width: 1px;
- */
+		// border-bottom-color: $uni-border-color;
+		// border-bottom-style: solid;
+		// border-bottom-width: 1px;
 	}
 
 	/* #ifndef APP-NVUE */

@@ -2,7 +2,8 @@
 	<!-- #ifdef APP-NVUE -->
 	<cell>
 		<!-- #endif -->
-		<view :class="disabled ? 'uni-list-item--disabled' : ''" :hover-class="disabled || showSwitch ? '' : 'uni-list-item--hover'" class="uni-list-item" @click="onClick">
+		<view :class="disabled ? 'uni-list-item--disabled' : ''" :hover-class="disabled || showSwitch ? '' : 'uni-list-item--hover'"
+		 class="uni-list-item" @click="onClick">
 			<view class="uni-list-item__container" :class="{'uni-list-item--first':isFirstChild}">
 				<view v-if="thumb" class="uni-list-item__icon">
 					<image :src="thumb" class="uni-list-item__icon-img" />
@@ -153,13 +154,15 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	$list-item-pd: $uni-spacing-col-lg $uni-spacing-row-lg;
+
 	.uni-list-item {
-		font-size: 32rpx;
+		font-size: $uni-font-size-lg;
 		position: relative;
 		flex-direction: column;
 		justify-content: space-between;
-		padding-left: 30rpx;
+		padding-left: $uni-spacing-row-lg;
 	}
 
 	.uni-list-item--disabled {
@@ -167,7 +170,7 @@
 	}
 
 	.uni-list-item--hover {
-		background-color: #f1f1f1;
+		background-color: $uni-bg-color-hover;
 	}
 
 	.uni-list-item__container {
@@ -176,14 +179,14 @@
 		display: flex;
 		/* #endif */
 		flex-direction: row;
-		padding: 24rpx 30rpx;
+		padding: $list-item-pd;
 		padding-left: 0;
 		flex: 1;
 		position: relative;
 		justify-content: space-between;
 		align-items: center;
 		/* #ifdef APP-PLUS */
-		border-top-color: #e5e5e5;
+		border-top-color: $uni-border-color;
 		border-top-style: solid;
 		border-top-width: 0.5px;
 		/* #endif */
@@ -203,7 +206,7 @@
 		content: '';
 		-webkit-transform: scaleY(.5);
 		transform: scaleY(.5);
-		background-color: #e5e5e5;
+		background-color: $uni-border-color;
 	}
 
 	.uni-list-item--first:after {
@@ -228,21 +231,20 @@
 	}
 
 	.uni-list-item__content-title {
-		font-size: 28rpx;
+		font-size: $uni-font-size-base;
 		color: #3b4144;
 		overflow: hidden;
 	}
 
 	.uni-list-item__content-note {
 		margin-top: 6rpx;
-		color: #999;
-		font-size: 24rpx;
+		color: $uni-text-color-grey;
+		font-size: $uni-font-size-sm;
 		overflow: hidden;
 	}
 
 	.uni-list-item__extra {
-		/* width: 25%;
- */
+		// width: 25%;
 		/* #ifndef APP-NVUE */
 		display: flex;
 		/* #endif */
@@ -259,12 +261,12 @@
 	}
 
 	.uni-list-item__icon-img {
-		height: 52rpx;
-		width: 52rpx;
+		height: $uni-img-size-base;
+		width: $uni-img-size-base;
 	}
 
 	.uni-list-item__extra-text {
-		color: #999;
-		font-size: 24rpx;
+		color: $uni-text-color-grey;
+		font-size: $uni-font-size-sm;
 	}
 </style>

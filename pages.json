@@ -17,6 +17,12 @@
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
+		},
+		{
+			"path": "pages/user/userInfo/index",
+			"style": {
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {
@@ -27,7 +33,7 @@
 	},
 	"tabBar": {
 		"color": "#333",
-		"selectedColor": "#1989fa",
+		"selectedColor": "#4289db",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [
@@ -40,7 +46,7 @@
 			{
 				"pagePath": "pages/user/info/index",
 				"iconPath": "static/image/user.svg",
-				"selectedIconPath": "static/image/user.svg",
+				"selectedIconPath": "static/image/user_HL.svg",
 				"text": "我的"
 			}
 		]
