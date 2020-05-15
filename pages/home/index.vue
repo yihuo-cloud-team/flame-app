@@ -210,9 +210,10 @@ export default {
       display: block;
       max-width: 150px;
       min-width: 150px;
-      max-height: 80px;
-      min-height: 80px;
+      max-height: 100px;
+      min-height: 100px;
       background-color: #dddddd;
+      border-radius: 5px;
     }
     .center {
       margin-left: 10px;
