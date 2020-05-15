@@ -3,7 +3,7 @@
 		{
 			"path": "pages/task/info/index",
 			"style": {
-				"navigationStyle": "任务详情"
+				"navigationBarTitleText": "任务详情"
 			}
 		},
 		{
@@ -33,7 +33,7 @@
 		{
 			"path": "pages/agreement/index",
 			"style": {
-				"navigationStyle": "协议"
+				"navigationBarTitleText": "协议"
 			}
 		},
 		{
