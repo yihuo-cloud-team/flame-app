@@ -1,9 +1,11 @@
-import uniIcons from "@/components/uni-icons/uni-icons.vue"
 export default {
-    name: 'userInfo',
+    name: 'save',
     data() {
         return {
-            userInfo: {},
+            name_Switch: false,
+            radio: 'D',
+            form: {
+            }
         };
     },
     methods: {
@@ -13,43 +15,37 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            let res = await this.$http('/user/save_info', {});
+            const res = await this.$http('/user/save_info', {});
             if (res.code > 0) {
-                this.userInfo = res.data;
+                this.form = res.data;
             }
-            // if (!this.get_id) {
-            //     let res = await this.$http('/user/save_info', {
-            //         id: this.$route.query.id
-            //     });
-            //     if (res.code > 0) {
-            //         this.userInfo = res.data;
-            //     }
-            // } else {
-            //     let res = await this.$http('/user/save_info', {});
-            //     if (res.code > 0) {
-            //         this.userInfo = res.data;
-            //     }
-            // }
         },
-        see(index) {
-            let arr = this.userInfo.img_list.map(url => this.$getUrl(url))
-            uni.previewImage({
-                current: index,
-                urls: arr
-            })
+        DateChange(e) {
+            this.form.birthday = e.detail.value
         },
-        go(url) {
-            uni.navigateTo({
-                url: url
-            })
+        RadioChange(e) {
+            this.form.gender = parseInt(e.detail.value)
+        },
+        Switch(key) {
+            this.form[key] = this.form[key] == 1 ? 0 : 1
+        },
+        async Submit(e) {
+            uni.showLoading({
+                title: '加载中'
+            });
+            const res = await this.$http('/user/save', this.form);
+            uni.hideLoading();
+            if (res.code > 0) {
+                uni.showToast({
+                    title: "修改成功",
+                    icon: "none"
+                });
+                this.$router.go(-1);
+            }
         }
     },
     // 计算属性
-    computed: {
-        get_id() {
-            return typeof this.$route.query.id == 'undefined'
-        }
-    },
+    computed: {},
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
@@ -78,5 +74,5 @@ export default {
     // 一个对象，键是需要观察的表达式，值是对应回调函数。
     watch: {},
     // 组件列表
-    components: { uniIcons },
+    components: {},
 };

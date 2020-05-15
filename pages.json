@@ -1,15 +1,15 @@
 {
 	"pages": [
 		{
-			"path": "pages/task/info/index",
-			"style": {
-				"navigationBarTitleText": "任务详情"
-			}
-		},
-		{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "uni-ui基础项目"
+			}
+		},
+		{
+			"path": "pages/task/info/index",
+			"style": {
+				"navigationStyle": "任务详情"
 			}
 		},
 		{
@@ -43,9 +43,20 @@
 			}
 		},
 		{
-			"path":"pages/user/task/add/index",
+			"path": "pages/user/save/index",
+			"style": {
+				"navigationBarTitleText": "编辑信息"
+			}
+		},
+		{
+			"path": "pages/task/add/index",
+			"style": {
+				"navigationBarTitleText": "任务发布"
+			}
+		},{
+			"path":"pages/amount/cash/index",
 			"style":{
-				"navigationBarTitleText":"任务发布"
+				"navigationBarTitleText":"我的提现"
 			}
 		}
 	],
