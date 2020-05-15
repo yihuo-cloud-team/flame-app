@@ -1,6 +1,12 @@
 {
 	"pages": [
 		{
+			"path": "pages/task/info/index",
+			"style": {
+				"navigationStyle": "任务详情"
+			}
+		},
+		{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "uni-ui基础项目"
@@ -22,6 +28,12 @@
 			"path": "pages/user/userInfo/index",
 			"style": {
 				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/agreement/index",
+			"style": {
+				"navigationStyle": "协议"
 			}
 		},
 		{

@@ -4,8 +4,6 @@
       <view class="title">我的相册</view>
       <view class="row">
         <view class="col"></view>
-        <view class="col"></view>
-        <view class="col"></view>
       </view>
     </view>
   </view>
