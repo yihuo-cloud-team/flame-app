@@ -10,15 +10,22 @@
     <view class="title">项目动态</view>
 
     <view class="r-card-list">
-      <view class="r-card" v-for="i in 10" :key="i">
-        <image :src="$getUrl(src)" />
+      <view
+        class="r-card"
+        v-for="(item,index) in moveList"
+        :key="index"
+        @click="go(`/pages/task/info/index?task_id=${item.id}`)"
+      >
+        <image mode="aspectFill" :src="$getUrl(item.img)" />
         <view class="info-box">
-          <view class="task-title">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</view>
+          <view class="task-title">{{item.task_name}}</view>
           <view class="price-box">
-            <text class="price">¥50.99</text>
-            <view class="cu-tag bg-red sm">招募中</view>
+            <text class="price">¥{{item.price}}</text>
+            <view class="cu-tag line-orange tag" v-if="item.task_state==0">招募中</view>
+            <view class="cu-tag line-orange tag" v-if="item.task_state==2">开发中</view>
+            <view class="cu-tag line-orange tag" v-if="item.task_state==4">完成</view>
           </view>
-          <view class="time">100分钟前|99人报名</view>
+          <view class="time">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</view>
         </view>
       </view>
     </view>
@@ -26,15 +33,22 @@
     <view class="title">任务列表</view>
 
     <view class="card-list">
-      <view class="card" v-for="i in 10" :key="i">
-        <image :src="$getUrl(src)" />
+      <view
+        class="card"
+        v-for="(item,index) in list"
+        @click="go(`/pages/task/info/index?task_id=${item.id}`)"
+        :key="index"
+      >
+        <image mode="aspectFill" :src="$getUrl(item.img)" />
         <view class="center">
-          <view class="task-title">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</view>
-          <view class="price">¥50.99</view>
-          <view class="time">100分钟前|99人报名</view>
+          <view class="task-title">{{item.task_name}}</view>
+          <view class="price">¥{{item.price}}</view>
+          <view class="time">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</view>
         </view>
         <view class="right">
-          <view class="cu-tag bg-red sm">招募中</view>
+          <view class="cu-tag line-orange tag" v-if="item.task_state==0">招募中</view>
+          <view class="cu-tag line-orange tag" v-if="item.task_state==2">开发中</view>
+          <view class="cu-tag line-orange tag" v-if="item.task_state==4">完成</view>
         </view>
       </view>
     </view>
@@ -49,15 +63,59 @@ import Upload from "../../plugins/Upload";
 export default {
   data() {
     return {
-      src: ""
+      src: "",
+      query: {
+        page: 1,
+        page_size: 10
+      },
+      list: [],
+      moveList: []
     };
   },
   methods: {
+    init() {
+      this.updata();
+      this.http_dynamic();
+    },
     async upload() {
       const file = await Upload.select();
       const res = await Upload.send(file);
       this.src = res.data.url;
+    },
+    async updata() {
+      const res = await this.$http("/task/list", this.query);
+      if (res.code > 0) {
+        this.list = [...this.list, ...res.data];
+        this.query.page++;
+      }
+      uni.stopPullDownRefresh();
+    },
+    async http_dynamic() {
+      const res = await this.$http("/task/move/list", {
+        page: 1,
+        page_size: 3
+      });
+      if (res.code >= 0) {
+        this.moveList = res.data;
+      }
+    },
+    go(url) {
+      uni.navigateTo({
+        url: url
+      });
     }
+  },
+  onReachBottom() {
+    this.updata();
+  },
+  onPullDownRefresh() {
+    this.list = [];
+    this.query.page = 1;
+    this.updata();
+  },
+  mounted() {
+    this.init();
+    this.$nextTick(() => {});
   }
 };
 </script>
@@ -66,6 +124,13 @@ export default {
 .title {
   font-size: 16px;
   padding: 15px 10px;
+}
+.tag {
+  color: #07c160;
+  // border-radius: 4px;
+  &:after {
+    border-radius: 8px;
+  }
 }
 .search-box {
   background-color: #ffffff;
@@ -89,8 +154,8 @@ export default {
   padding: 10px;
   .r-card {
     border-radius: 5px;
-    min-width: 40%;
-    max-width: 40%;
+    min-width: 45%;
+    max-width: 45%;
     display: block;
     overflow: hidden;
     background-color: #ffffff;
@@ -136,14 +201,15 @@ export default {
   background-color: #ffffff;
   .card {
     display: flex;
-    align-items: center;
+    // align-items: center;
     overflow: hidden;
     border-bottom: 1px solid #f1f1f1;
     margin-bottom: 10px;
     padding-bottom: 10px;
     image {
       display: block;
-      width: 150px;
+      max-width: 150px;
+      min-width: 150px;
       max-height: 80px;
       min-height: 80px;
       background-color: #dddddd;
@@ -152,6 +218,7 @@ export default {
       margin-left: 10px;
       overflow: hidden;
       margin-right: 10px;
+      padding-top: 10px;
       .task-title {
         overflow: hidden;
         white-space: nowrap;
@@ -171,6 +238,9 @@ export default {
       }
     }
     .right {
+      flex: 1;
+      padding-top: 8px;
+      text-align: right;
     }
   }
 }

@@ -9,7 +9,6 @@ export default {
     methods: {
         // 用于初始化一些数据
         init() {
-            this.update();
         },
         // 用于更新一些数据
         async update() {
@@ -43,6 +42,9 @@ export default {
                 url: url
             })
         }
+    },
+    onShow() {
+        this.update();
     },
     // 计算属性
     computed: {
