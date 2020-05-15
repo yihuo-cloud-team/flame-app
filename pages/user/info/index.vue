@@ -14,12 +14,12 @@
     <view class="body">
       <uni-list>
         <uni-list-item title="用户信息" @click="go('/pages/user/userInfo/index')"></uni-list-item>
-        <uni-list-item title="发布任务"></uni-list-item>
+        <uni-list-item title="发布任务" @click="go('/pages/task/add/index')"></uni-list-item>
         <uni-list-item title="我的发布"></uni-list-item>
         <uni-list-item title="我申请的任务"></uni-list-item>
         <uni-list-item title="我接到的任务"></uni-list-item>
         <uni-list-item title="平台行业排行榜"></uni-list-item>
-        <uni-list-item title="我的提现"></uni-list-item>
+        <uni-list-item title="我的提现" @click="go('/pages/amount/cash/index')"></uni-list-item>
         <uni-list-item title="活动"></uni-list-item>
         <uni-list-item title="投诉与建议"></uni-list-item>
         <uni-list-item title="帮助说明"></uni-list-item>
