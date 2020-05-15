@@ -34,7 +34,7 @@
     <view class="basics">
       <view class="title">
         基本信息
-        <view class="edit-body">
+        <view class="edit-body" @click="go('/pages/user/save/index')">
           编辑资料
           <uni-icons type="arrowright" size="14" color="#666"></uni-icons>
         </view>
