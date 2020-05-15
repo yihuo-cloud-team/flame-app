@@ -59,7 +59,7 @@
 		{
 			"path": "pages/agreement/index",
 			"style": {
-				"navigationStyle": "协议"
+				"navigationBarTitleText": "协议"
 			}
 		},
 		{
