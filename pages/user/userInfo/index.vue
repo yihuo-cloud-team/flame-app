@@ -1,20 +1,20 @@
 <template>
   <view id="userInfo">
     <swiper class="album" :indicator-dots="false" autoplay>
-      <swiper-item v-for="(item,index) in album" :key="index" @click="see(index)">
-        <image class="img" mode="aspectFill" :src="item" />
+      <swiper-item v-for="(item,index) in userInfo.img_list" :key="index" @click="see(index)">
+        <image class="img" mode="aspectFill" :src="$getUrl(item)" />
       </swiper-item>
     </swiper>
     <view class="info">
       <view class="user-img">
-        <image
-          src="http://img1.imgtn.bdimg.com/it/u=2537929852,1205531337&fm=26&gp=0.jpg"
-          class="img"
-        />
+        <image :src="$getUrl(userInfo.head_img)" class="img" />
       </view>
       <view class="user-info">
-        <view class="name">惠普</view>
-        <view class="tag" :style="{'backgroundColor' : 'rgb(222, 147, 243)'}">天蝎座</view>
+        <view class="name">{{userInfo.name}}</view>
+        <view
+          class="tag"
+          :style="{'backgroundColor' : 'rgb(222, 147, 243)'}"
+        >{{userInfo.constellation}}</view>
       </view>
       <view class="edit">
         <view class="edit-body" @click="go('/pages/user/hobby/index')">
@@ -24,10 +24,12 @@
       </view>
     </view>
     <view class="tag-box">
-      <view class="tag" :style="{'backgroundColor' : 'rgb(222, 147, 243)'}">天蝎座</view>
-      <view class="tag" :style="{'backgroundColor' : 'rgb(222, 147, 243)'}">天蝎座</view>
-      <view class="tag" :style="{'backgroundColor' : 'rgb(222, 147, 243)'}">天蝎座</view>
-      <view class="tag" :style="{'backgroundColor' : 'rgb(222, 147, 243)'}">天蝎座</view>
+      <view
+        class="tag"
+        v-for="(item,index) in userInfo.like_list"
+        :key="index"
+        :style="{'backgroundColor' : item.color}"
+      >{{item.text}}</view>
     </view>
     <view class="basics">
       <view class="title">
@@ -38,10 +40,10 @@
         </view>
       </view>
       <view class="body">
-        <view class="gender">性别：男生</view>
-        <view class="phone">联系方式：18903030403</view>
-        <view class="birthday">出生日期：1950年01月1日</view>
-        <view class="skill">专业技能：e t</view>
+        <view class="gender">性别：{{userInfo.gender == 1 ? '男生' : '女士'}}</view>
+        <view class="phone">联系方式：{{userInfo.phone}}</view>
+        <view class="birthday">出生日期：{{userInfo.birthday}}</view>
+        <view class="skill">专业技能：{{userInfo.skill}}</view>
       </view>
     </view>
   </view>

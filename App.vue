@@ -1,6 +1,8 @@
 <script>
+import jwt from "./plugins/jwt.js";
 export default {
   onLaunch: function() {
+    uni.setStorageSync("jwt", jwt.jwt);
     console.log("App Launch");
     // uni.clearStorageSync();
     if (!uni.getStorageSync("jwt")) {

@@ -3,6 +3,7 @@ export default {
     name: 'userInfo',
     data() {
         return {
+            userInfo: {},
             album: [
                 // 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589281453412&di=955dc8abb77c9ca33c58a5313b0defb0&imgtype=0&src=http%3A%2F%2Fpic.feizl.com%2Fupload%2Fallimg%2F170614%2F22550Q911-0.jpg',
                 // 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589281453412&di=080995bd8f99ac79df70ba294f417ef5&imgtype=0&src=http%3A%2F%2Fpic.feizl.com%2Fupload%2Fallimg%2F170615%2F12032J3X-1.jpg',
@@ -18,12 +19,25 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            if (!this.get_id) {
+                let res = await this.$http('/user/save_info', {
+                    id: this.$route.query.id
+                });
+                if (res.code > 0) {
+                    this.userInfo = res.data;
+                }
+            } else {
+                let res = await this.$http('/user/save_info', {});
+                if (res.code > 0) {
+                    this.userInfo = res.data;
+                }
+            }
         },
         see(index) {
+            let arr = this.userInfo.img_list.map(url => this.$getUrl(url))
             uni.previewImage({
                 current: index,
-                urls: this.album
+                urls: arr
             })
         },
         go(url) {
@@ -33,7 +47,11 @@ export default {
         }
     },
     // 计算属性
-    computed: {},
+    computed: {
+        get_id() {
+            return typeof this.$route.query.id == 'undefined'
+        }
+    },
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
     // 在实例创建完成后被立即调用
