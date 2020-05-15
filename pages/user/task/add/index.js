@@ -23,6 +23,7 @@ export default {
 			areaList: [],
 			classList: [],
 			priceList: [],
+			show: false
 		};
     },
     methods: {
@@ -55,6 +56,15 @@ export default {
 		        }
 		    })
 		},
+		select(e) {
+		    this.form.p = e[0].code;
+		    this.form.c = e[1].code;
+		    this.form.a = e[2].code;
+	        this.show = false;
+	    },
+		price(num) {
+		    this.form.price = num;
+		}
     },
     // 计算属性
     computed: {
