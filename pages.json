@@ -41,6 +41,12 @@
 			"style": {
 				"navigationBarTitleText": "个人爱好"
 			}
+		},
+		{
+			"path": "pages/user/save/index",
+			"style": {
+				"navigationBarTitleText": "编辑信息"
+			}
 		}
 	],
 	"globalStyle": {
