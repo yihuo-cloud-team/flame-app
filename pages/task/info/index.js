@@ -33,7 +33,7 @@ export default {
 				task_state: 6
 			}],
 
-			task_id: 114
+			task_id: 0
 		}
 	},
 	methods: {
@@ -258,6 +258,11 @@ export default {
 			});
 		}
 	},
+	onLoad: function(option) {
+		console.log(option.id);
+		this.task_id = option.task_id;
+	},
+	
 	// 计算属性
 	computed: {},
 	// 包含 Vue 实例可用过滤器的哈希表。
