@@ -1,6 +1,48 @@
 *{box-sizing: border-box;}
 #login {
-	padding: $page-padding;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .text {
+        font-size: 20px;
+        color: #101010;
+        text-align: center;
+        margin-top: 150px;
+    }
+	
+	.radio{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+    .people {
+        display: flex;
+        flex-direction: column;
+
+        .img {
+            width: 80px;
+            height: 80px;
+            margin-left: 165px;
+            margin-top: 55px;
+            border-radius: 5px;
+            display: block;
+            background-color: #dddddd;
+        }
+
+        .name {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    }
+
+    .ment {
+        text-decoration: underline
+    }
+    .bottom-button {
+        margin-top: 20px;
+    }
 }
 
 #login /deep/ {
@@ -8,4 +50,10 @@
 		background: #FFF;
 		padding: 20rpx;
 	}
+}
+
+.flexCC{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

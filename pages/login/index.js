@@ -4,6 +4,8 @@ export default {
 		return {
 			userInfo: {},
 			msg: '',
+			checked: false,
+			isShow: false,
 		};
 	},
 	methods: {
@@ -16,37 +18,58 @@ export default {
 			// const res = await this.$http('', {});
 		},
 		async submit() {},
-		wxLogin() {
-			var _this=this;
+		async wxLogin() {
+			var _this = this;
 			uni.login({
 				provider: 'weixin',
 				success: function(loginRes) {
 					console.log(loginRes.authResult);
 					uni.getUserInfo({
 						provider: 'weixin',
-						success: function(infoRes) {
+						success: async function(infoRes) {
 							console.log(infoRes)
 							_this.userInfo = _this.$twoJsonMerge(loginRes.authResult, infoRes)
-							// const res = await _this.$http('/auth/login', _this.form);
-							// if (res.code >= 1) {
-							// 	uni.setStorageSync('jwt', res.jwt);
-							// 	uni.setStorageSync('userInfo', JSON.stringify(res.data));
-							// 	uni.reLaunch({
-							// 		url: '/pages/select/index',
-							// 	});
-							// } else {
-							// 	_this.msg = res.msg;
-							// 	_this.$refs.popup.open();
-							// }
+							let openid=loginRes.authResult.openid;
+							let access_token=loginRes.authResult.access_token;
+							let unionid=loginRes.authResult.unionid;
+							console.log(openid,access_token,unionid)
+							const res = await _this.$http('/auth/login',{openid,access_token,unionid});
+							console.log(res)
+							if (res.code >= 1) {
+								uni.setStorageSync('jwt', res.jwt);
+								uni.setStorageSync('userInfo', JSON.stringify(res.data));
+								uni.reLaunch({
+									url: '/pages/home/index',
+								});
+							} else {
+								_this.errPopup(_this.msg);
+							}
+						},
+						fail: function(error) {
+							console.log(error.errMsg);
+							_this.errPopup(error.errMsg);
 						}
 					});
+				},
+				fail: function(error) {
+					console.log(error.errMsg);
+					_this.errPopup(error.errMsg);
 				}
 			});
 		},
+		goAgreement() {
+			uni.navigateTo({
+				url: '/pages/agreement/index',
+			});
+		},
+		errPopup(msg) {
+			this.msg = msg;
+			this.$refs.popup.open();
+		}
 	},
 	// 计算属性
 	computed: {
-		jsonData:function(json){
+		jsonData: function(json) {
 			return JSON.stringify(this.userInfo)
 		}
 	},

@@ -29,4 +29,6 @@ export default {
   src: url("/static/uni.ttf");
 }
 /* #endif */
+@import "colorui/main.css";
+@import "colorui/icon.css";
 </style>

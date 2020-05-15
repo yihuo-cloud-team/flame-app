@@ -1,6 +1,10 @@
 {
-	"pages": [
-		{
+	"pages": [{
+			"path": "pages/task/info/index",
+			"style": {
+				"navigationStyle": "任务详情"
+			}
+		},{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "uni-ui基础项目"
@@ -18,10 +22,17 @@
 				"navigationBarTitleText": "登录"
 			}
 		},
+		
 		{
 			"path": "pages/user/userInfo/index",
 			"style": {
 				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/agreement/index",
+			"style": {
+				"navigationStyle": "协议"
 			}
 		}
 	],
@@ -36,8 +47,7 @@
 		"selectedColor": "#4289db",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/home/index",
 				"iconPath": "static/image/home.svg",
 				"selectedIconPath": "static/image/home_HL.svg",
