@@ -15,7 +15,7 @@
 	          <image :class="form.img==''?'img':'img1'" :src="$getUrl(form.img)" mode='widthFix'/>
 	        </ol-upload>
 			<!-- color: rgba(66, 137, 220, 1)-->
-	        <uni-tag class="tag" text="默认图片" @click="change" plain inverted size="small" type="primary"></uni-tag>
+	        <view class="cu-tag line-blue" @click="change">默认图片</view>
 	      </view>
 	    </view>
 	    <view class="task-type">
@@ -27,8 +27,8 @@
 	    <view class="price">
 	      <view class="title">任务价格</view>
 	      <view class="price-box" v-if="priceList">
-			  <!-- <span @click="price(todo)" v-for="(todo,i) in priceList" :key='i'>{{todo}}</span> -->
-	        <uni-tag class="tag" @click="price(todo)" v-for="(todo,i) in priceList" :key='i' :text="todo+''" type="danger" size="small" inverted></uni-tag>
+			<view class="cu-tag bg-red" style="margin:5px;" @click="price(todo)" v-for="(todo,i) in priceList" :key='i'>{{todo}}</view>
+	        <!-- <uni-tag class="tag" @click="price(todo)" v-for="(todo,i) in priceList" :key='i' :text="todo+''" type="danger" size="small" inverted></uni-tag> -->
 	      </view>
 	      <view class="input">
 	        <input maxlength="30" type="number" v-model.number="form.price" placeholder="请输入数字" />

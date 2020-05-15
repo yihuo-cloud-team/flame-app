@@ -43,9 +43,15 @@
 			}
 		},
 		{
-			"path":"pages/user/task/add/index",
-			"style":{
-				"navigationBarTitleText":"任务发布"
+			"path": "pages/user/save/index",
+			"style": {
+				"navigationBarTitleText": "编辑信息"
+			}
+		},
+		{
+			"path": "pages/user/task/add/index",
+			"style": {
+				"navigationBarTitleText": "任务发布"
 			}
 		}
 	],
