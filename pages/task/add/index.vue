@@ -11,9 +11,7 @@
 	    <view class="tupian">
 	      <view class="title">任务图片</view>
 	      <view class="store-image">
-	        <ol-upload style="border-radius:100%;">
-	          <image :class="form.img==''?'img':'img1'" :src="$getUrl(form.img)" mode='widthFix'/>
-	        </ol-upload>
+	        
 			<!-- color: rgba(66, 137, 220, 1)-->
 	        <view class="cu-tag line-blue" @click="change">默认图片</view>
 	      </view>
