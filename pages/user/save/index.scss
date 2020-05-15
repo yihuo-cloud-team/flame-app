@@ -1,0 +1,42 @@
+#save {}
+
+.head {
+    background-color: #fff;
+    display: flex;
+    padding: 10px;
+
+    .head-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 4px;
+        overflow: hidden;
+
+        .img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+
+}
+
+.user-info {
+
+    .title-f {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .cu-form-group .title {
+        min-width: calc(4em + 15px);
+    }
+}
+.placeholder{
+    color: rgba($color: #000000, $alpha: 0.6);
+    font-size: 14px;
+    &.color{
+        color: #000000;
+    }
+}
+
+#save /deep/ {}
