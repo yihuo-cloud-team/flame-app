@@ -3,6 +3,7 @@
   <view class="container">
     <image :src="$getUrl(src)" />
     <button @click="upload">upload</button>
+    <view class="cu-tag bg-red">默认</view>
   </view>
 </template>
 
