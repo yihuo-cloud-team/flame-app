@@ -1,7 +1,7 @@
 #userInfo {}
 
 .album {
-    height: 240px;
+    height: 320px;
 }
 
 .img {
@@ -33,11 +33,57 @@
             font-size: 14px;
             margin-bottom: 10px;
         }
+    }
 
-        .tag {
-            background-color: rgb(222, 147, 243);
+    .edit {
+        padding: 5px 0;
+        font-size: 14px;
+        color: #666;
+    }
+}
+
+.tag-box {
+    padding: 0 16px;
+    margin-bottom: 20px;
+}
+
+.basics {
+    .title {
+        padding: 10px 16px;
+        background-color: #f6f6f6;
+        display: flex;
+        justify-content: space-between;
+
+        .edit-body {
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
         }
     }
+
+    .body {
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 700;
+
+        .gender,
+        .phone,
+        .birthday {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: .2em .5em;
+    color: #fff;
+    font-size: 10px;
+    line-height: normal;
+    border-radius: .2em;
+    margin-right: 10px;
 }
 
 #userInfo /deep/ {}
