@@ -1,37 +1,35 @@
+
 <template>
   <view class="container">
-    <view
-      class="intro"
-    >本项目已包含uni ui组件，无需import和注册，可直接使用。在代码区键入字母u，即可通过代码助手列出所有可用组件。光标置于组件名称处按F1，即可查看组件文档。</view>
-    <text class="intro">详见：</text>
-    <!-- <uni-link  :text="href"></uni-link> -->
-    <text @click="test">222</text>
+    <image :src="$getUrl(src)" />
+    <button @click="upload">upload</button>
   </view>
 </template>
 
 <script>
+import Upload from "../../plugins/Upload";
 export default {
   data() {
     return {
-      href: "https://uniapp.dcloud.io/component/README?id=uniui"
+      src: ""
     };
   },
   methods: {
-    test() {
-      console.warn(1);
-
-      uni.navigateTo({
-        url: "/pages/user/info/index"
-      });
+    async upload() {
+      const file = await Upload.select();
+      const res = await Upload.send(file);
+      this.src = res.data.url;
     }
   }
 };
 </script>
 
 <style>
-.container {
-  padding: 20px;
-  font-size: 14px;
-  line-height: 24px;
+image {
+  width: 80%;
+  height: 300px;
+  display: block;
+  margin: 15px auto;
+  background-color: #dddddd;
 }
 </style>
