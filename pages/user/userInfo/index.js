@@ -4,12 +4,6 @@ export default {
     data() {
         return {
             userInfo: {},
-            album: [
-                // 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589281453412&di=955dc8abb77c9ca33c58a5313b0defb0&imgtype=0&src=http%3A%2F%2Fpic.feizl.com%2Fupload%2Fallimg%2F170614%2F22550Q911-0.jpg',
-                // 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589281453412&di=080995bd8f99ac79df70ba294f417ef5&imgtype=0&src=http%3A%2F%2Fpic.feizl.com%2Fupload%2Fallimg%2F170615%2F12032J3X-1.jpg',
-                // 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589281453411&di=534a544d0dd02b54c4b6417b31bf89c9&imgtype=0&src=http%3A%2F%2F00.minipic.eastday.com%2F20170218%2F20170218105029_9dc6b1c95dbf9be770d8f5b04924ad32_5.jpeg',
-                // 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589281453410&di=3a32418fe1ce8625e3b0898952ada1ac&imgtype=0&src=http%3A%2F%2F00.minipic.eastday.com%2F20170406%2F20170406134755_357856349beab76664d9d13364729de1_6.jpeg'
-            ]
         };
     },
     methods: {
@@ -19,19 +13,23 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            if (!this.get_id) {
-                let res = await this.$http('/user/save_info', {
-                    id: this.$route.query.id
-                });
-                if (res.code > 0) {
-                    this.userInfo = res.data;
-                }
-            } else {
-                let res = await this.$http('/user/save_info', {});
-                if (res.code > 0) {
-                    this.userInfo = res.data;
-                }
+            let res = await this.$http('/user/save_info', {});
+            if (res.code > 0) {
+                this.userInfo = res.data;
             }
+            // if (!this.get_id) {
+            //     let res = await this.$http('/user/save_info', {
+            //         id: this.$route.query.id
+            //     });
+            //     if (res.code > 0) {
+            //         this.userInfo = res.data;
+            //     }
+            // } else {
+            //     let res = await this.$http('/user/save_info', {});
+            //     if (res.code > 0) {
+            //         this.userInfo = res.data;
+            //     }
+            // }
         },
         see(index) {
             let arr = this.userInfo.img_list.map(url => this.$getUrl(url))

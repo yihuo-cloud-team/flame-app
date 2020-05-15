@@ -16,8 +16,18 @@
             height: 100%;
         }
     }
+}
 
+.footbtn {
+    padding: 10px;
 
+    .btn {
+        color: rgb(255, 255, 255);
+        background: rgb(66, 137, 219);
+        border-color: rgb(66, 137, 219);
+        // font-size: 14px;
+        border-radius: 2px;
+    }
 }
 
 .user-info {
@@ -31,12 +41,26 @@
         min-width: calc(4em + 15px);
     }
 }
-.placeholder{
+
+.placeholder {
     color: rgba($color: #000000, $alpha: 0.6);
     font-size: 14px;
-    &.color{
+
+    &.color {
         color: #000000;
     }
 }
 
-#save /deep/ {}
+.radio-box {
+    flex: 1;
+}
+
+#save /deep/ {
+    .blue {
+        margin-right: 10px;
+
+        .uni-radio-input {
+            margin-right: 5px;
+        }
+    }
+}

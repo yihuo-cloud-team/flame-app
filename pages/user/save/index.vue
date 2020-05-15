@@ -2,79 +2,88 @@
   <view id="save">
     <view class="head">
       <view class="head-img">
-        <image
-          class="img"
-          src="http://pic2.zhimg.com/50/v2-958d33fd4a4de747058adcafdf753074_hd.jpg"
-        />
+        <image class="img" :src="$getUrl(form.head_img)" />
       </view>
     </view>
     <view class="user-info">
       <view class="title-f">基本信息</view>
       <view>
-        <form @submit="formSubmit" @reset="formReset">
+        <form>
           <view class="cu-form-group">
             <view class="title">昵称</view>
-            <input placeholder="请输入您的昵称" name="input" />
+            <input placeholder="请输入您的昵称" v-model="form.name" name="input" />
             <view class="cu-capsule radius">
               <switch
-                @change="name_Switch = !name_Switch"
-                :class="name_Switch?'checked':''"
-                :checked="name_Switch?true:false"
+                @change="Switch('name_show')"
+                :class="form.name_show?'checked':''"
+                :checked="form.name_show?true:false"
               ></switch>
             </view>
           </view>
           <view class="cu-form-group">
             <view class="title">联系方式</view>
-            <input placeholder="请输入联系方式" name="input" />
+            <input placeholder="请输入联系方式" v-model="form.phone" name="input" />
           </view>
           <view class="cu-form-group">
             <view class="title">日期选择</view>
             <picker
               mode="date"
-              :value="date"
+              :value="form.birthday"
               start="2015-09-01"
               end="2025-09-01"
               @change="DateChange"
             >
-              <view :class="['placeholder' , { 'color' : date }]">{{date?date:'请选择您的生日'}}</view>
+              <view
+                :class="['placeholder' , { 'color' : form.birthday }]"
+              >{{form.birthday?form.birthday:'请选择您的生日'}}</view>
             </picker>
             <view class="cu-capsule radius">
               <switch
-                @change="name_Switch = !name_Switch"
-                :class="name_Switch?'checked':''"
-                :checked="name_Switch?true:false"
+                @change="Switch('birthday_show')"
+                :class="form.birthday_show?'checked':''"
+                :checked="form.birthday_show?true:false"
               ></switch>
             </view>
           </view>
           <view class="cu-form-group">
-            <view class="title">定义颜色</view>
-            <view>
-              <radio-group class="block" @change="RadioChange">
+            <view class="title">性别</view>
+            <view class="radio-box">
+              <radio-group @change="RadioChange">
                 <radio
                   class="blue radio"
-                  :class="radio=='C'?'checked':''"
-                  :checked="radio=='C'?true:false"
-                  value="C"
+                  :class="form.gender==1?'checked':''"
+                  :checked="form.gender==1?true:false"
+                  value="1"
                 >男生</radio>
                 <radio
                   class="blue radio"
-                  :class="radio=='D'?'checked':''"
-                  :checked="radio=='D'?true:false"
-                  value="D"
+                  :class="form.gender==0?'checked':''"
+                  :checked="form.gender==0?true:false"
+                  value="0"
                 >女士</radio>
               </radio-group>
+            </view>
+            <view class="cu-capsule radius">
+              <switch
+                @change="Switch('gender_show')"
+                :class="form.gender_show?'checked':''"
+                :checked="form.gender_show?true:false"
+              ></switch>
             </view>
           </view>
           <view class="cu-form-group">
             <view class="title">专业技能</view>
-            <input placeholder="请输入专业技能" name="input" />
+            <input placeholder="请输入专业技能" v-model="form.skill" name="input" />
             <view class="cu-capsule radius">
               <switch
-                @change="jn_Switch = !jn_Switch"
-                :class="jn_Switch?'checked':''"
-                :checked="jn_Switch?true:false"
+                @change="Switch('skill_show')"
+                :class="form.skill_show?'checked':''"
+                :checked="form.skill_show?true:false"
               ></switch>
             </view>
+          </view>
+          <view class="footbtn">
+            <button form-type="submit" @click="Submit" class="btn" type="primary">保存</button>
           </view>
         </form>
       </view>

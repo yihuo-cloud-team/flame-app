@@ -3,9 +3,9 @@ export default {
     data() {
         return {
             name_Switch: false,
-            jn_Switch: false,
-            date: '',
-            radio: 'D'
+            radio: 'D',
+            form: {
+            }
         };
     },
     methods: {
@@ -15,11 +15,34 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            const res = await this.$http('/user/save_info', {});
+            if (res.code > 0) {
+                this.form = res.data;
+            }
         },
         DateChange(e) {
-            this.date = e.detail.value
+            this.form.birthday = e.detail.value
         },
+        RadioChange(e) {
+            this.form.gender = parseInt(e.detail.value)
+        },
+        Switch(key) {
+            this.form[key] = this.form[key] == 1 ? 0 : 1
+        },
+        async Submit(e) {
+            uni.showLoading({
+                title: '加载中'
+            });
+            const res = await this.$http('/user/save', this.form);
+            uni.hideLoading();
+            if (res.code > 0) {
+                uni.showToast({
+                    title: "修改成功",
+                    icon: "none"
+                });
+                this.$router.go(-1);
+            }
+        }
     },
     // 计算属性
     computed: {},

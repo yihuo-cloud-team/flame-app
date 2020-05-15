@@ -1,15 +1,15 @@
 {
 	"pages": [
 		{
-			"path": "pages/task/info/index",
-			"style": {
-				"navigationStyle": "任务详情"
-			}
-		},
-		{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "uni-ui基础项目"
+			}
+		},
+		{
+			"path": "pages/task/info/index",
+			"style": {
+				"navigationStyle": "任务详情"
 			}
 		},
 		{
