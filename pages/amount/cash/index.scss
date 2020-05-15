@@ -1,0 +1,114 @@
+
+#cash {
+  background-color: #F0F2F5;
+  height: 100vh;
+}
+
+.panel {
+  .panel-money {
+    display: flex;
+    color: #ffffff;
+    height: 117px;
+    background-color: #4289DB;
+    padding-left: 22px;
+  
+    .left{
+      flex: 1;
+      .money-text {
+        padding-top: 31px;
+        font-size: 12px;
+      }
+  
+      .money-num {
+        margin-top: 15px;
+        font-size: 28px;
+      }
+    }
+    .right{
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+   
+      padding-right: 20px;
+      .text{
+        font-size: 14px;
+      }
+    }
+  
+  }
+
+  .panel-cash {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: #5D99E1;
+
+    .cash {
+      margin-left: 20px;
+      margin-top: 5px;
+      color: #ffffff;
+
+      .cash-num {
+        margin-top: 7px;
+        font-size: 12px;
+      }
+    }
+
+    .frozen {
+
+      margin-right: 20px;
+      margin-top: 5px;
+      color: #ffffff;
+
+      .frozen-num {
+        margin-top: 7px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+
+.tixian{
+  padding: 15px;
+  .title{
+      padding: 10px 0;
+  }
+  .checkb {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 40px;
+      justify-content: flex-start;
+
+
+      .box {
+        flex: 1;
+        width: 45px;
+        margin: 0px 10px;
+        display: inline-block;
+        font-size: 13px;
+        border-radius: 4px;
+        line-height: 28px;
+        text-align: center;
+        margin-right: 5px;
+        background-color: #eee;
+        color: black;
+
+        &.active {
+          background-color: #4289DB;
+          color: white;
+        }
+      }
+
+    }
+
+  .box{
+      display: flex;
+      justify-content: flex-end;
+      .btn{
+          font-size: 13px;
+      }
+  }
+ 
+}

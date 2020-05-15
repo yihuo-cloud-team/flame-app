@@ -1,0 +1,173 @@
+#add {
+  padding: 10px 15px;
+
+  .input {
+    border-radius: 5px;
+    color: rgba(136, 136, 136, 1);
+    font-size: 14px;
+    border: 1px solid rgba(187, 187, 187, 1);
+    overflow: hidden;
+    padding: 10px;
+    background-color: #ffffff;
+  }
+
+  .title {
+    color: rgba(16, 16, 16, 1);
+    font-size: 21px;
+    padding: 20px 0;
+  }
+
+  .tupian {
+
+    .task-img {
+      background-color: #ffffff;
+      width: 100%;
+      max-height: 200px;
+      min-height: 200px;
+      border-radius: 5px;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .default-text {
+      text-align: right;
+      text-decoration: underline;
+      padding: 5px 0;
+    }
+
+  }
+
+  .name {
+    margin-bottom: 30px;
+
+
+  }
+
+  .task-type {
+    margin-bottom: 28px;
+    max-width: 100%;
+    position: relative;
+
+
+    .option {
+      display: flex;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+
+      .item {
+        position: relative;
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+
+        padding: 5px;
+
+        view {
+          border-radius: 5px;
+          text-align: center;
+          width: 100%;
+          background-color: #fff;
+          color: rgba(16, 16, 16, 1);
+          font-size: 16px;
+          padding: 30px 0;
+          border: 1px solid rgba(66, 137, 220, 0);
+        }
+
+        &.activ {
+          view {
+            color: rgba(66, 137, 220, 1);
+            border: 1px solid rgba(66, 137, 220, 1);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+  }
+
+  .price {
+    margin-bottom: 30px;
+
+    .price-box {
+      display: flex;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+
+      .price-card {
+        position: relative;
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+
+        padding: 5px;
+
+        view {
+          border-radius: 5px;
+          text-align: center;
+          width: 100%;
+          background-color: #fff;
+          color: rgba(16, 16, 16, 1);
+          font-size: 16px;
+          padding: 15px 0;
+          border: 1px solid rgba(66, 137, 220, 0);
+        }
+      }
+    }
+
+  }
+
+  .info {
+    margin-bottom: 20px;
+
+
+  }
+
+  .region {
+    margin-bottom: 30px;
+
+
+    .input {
+      padding: 10px;
+      background-color: #fff;
+    }
+  }
+
+  .address {
+    margin-bottom: 40px;
+
+
+  }
+
+  .btn {
+
+    height: 46px;
+    border-radius: 4px;
+    margin: 0 auto;
+    background-color: rgba(66, 137, 219, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+    margin-bottom: 30px;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
+  opacity: 0;
+}

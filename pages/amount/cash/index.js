@@ -1,29 +1,11 @@
 import uniList from "@/components/uni-list/uni-list.vue"
 import uniListItem from "@/components/uni-list-item/uni-list-item.vue"
-import uniTag from "@/components/uni-tag/uni-tag.vue"
-
 
 export default {
-    name: 'add',
+    name: 'cash',
     data() {
         return {
-			form:{
-				task_name: "", //任务名称
-				task_type: 0, //任务类型
-				price: "", //任务价格
-				info: "", //任务详情
-				p: "", //省
-				c: "", //市
-				a: "", //区
-				contact: "", //联系方式
-				cycle: "", //任务周期
-				address: "", //详细地址
-				img: ""
-			},
-			areaList: [],
-			classList: [],
-			priceList: [],
-			show: false
+			info: {},
 		};
     },
     methods: {
@@ -33,44 +15,20 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            const res = await this.$http('/class/list', {});
+            const res = await this.$http('/user/info', {});
 			if (res.code >= 0) {
-			    this.classList = res.data;
-			    this.form.task_type = this.classList[0].id;
+			        this.info = res.data
 			}
-			if (!this.isApp) {
-			    this.form.task_type = parseInt(this.$route.query.type)
-			}
-			// console.warn(res);
         },
         go(url) {
             uni.navigateTo({
                 url: url
             })
         },
-		change() {
-		    this.classList.forEach(res => {
-		        if (this.form.task_type === res.id) {
-		          this.form.img = this.$getUrl(res.icon);
-		          return
-		        }
-		    })
-		},
-		select(e) {
-		    this.form.p = e[0].code;
-		    this.form.c = e[1].code;
-		    this.form.a = e[2].code;
-	        this.show = false;
-	    },
-		price(num) {
-		    this.form.price = num;
-		}
     },
     // 计算属性
     computed: {
-		isApp() {
-		      return typeof this.$route.query.type == 'undefined'
-		}
+		
 	},
     // 包含 Vue 实例可用过滤器的哈希表。
     filters: {},
@@ -99,19 +57,12 @@ export default {
     directives: {},
     // 一个对象，键是需要观察的表达式，值是对应回调函数。
     watch: {
-		'form.task_type': function () {
-		    this.classList.forEach(res => {
-		        if (this.form.task_type === res.id) {
-		          this.priceList = res.price;
-		          console.log(this.priceList)
-		        }
-		    })
-		}
+		
 	},
     // 组件列表
     components: {
         uniList,
         uniListItem,
-		uniTag
+		
     },
 };
