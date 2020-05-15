@@ -3,22 +3,31 @@ import uniListItem from "@/components/uni-list-item/uni-list-item.vue"
 export default {
     name: 'info',
     data() {
-        return {};
+        return {
+            userInfo: {}
+        };
     },
+
     methods: {
         // 用于初始化一些数据
         init() {
-            this.update();
+
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            const res = await this.$http('/user/save_info', {});
+            if (res.code > 0) {
+                this.userInfo = res.data;
+            }
         },
         go(url) {
             uni.navigateTo({
                 url: url
             })
         }
+    },
+    onShow() {
+        this.update();
     },
     // 计算属性
     computed: {},

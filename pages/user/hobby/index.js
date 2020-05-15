@@ -1,7 +1,10 @@
+import uniIcons from "@/components/uni-icons/uni-icons.vue"
 export default {
     name: 'hobby',
     data() {
-        return {};
+        return {
+            userInfo: {}
+        };
     },
     methods: {
         // 用于初始化一些数据
@@ -10,7 +13,31 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            const res = await this.$http('/user/save_info', {});
+            if (res.code > 0) {
+                this.userInfo = res.data;
+            }
+        },
+        delImg(index) {
+            this.userInfo.img_list.splice(index, 1)
+            this.submit('删除成功')
+        },
+        close(index) {
+            this.userInfo.like_list.splice(index, 1)
+            this.submit('删除成功')
+        },
+        async submit(text) {
+            try {
+                const res = await this.$http('/user/save', this.userInfo)
+                if (res.code > 0) {
+                    uni.showToast({
+                        title: text,
+                        icon: 'none'
+                    })
+                }
+            } catch (error) {
+
+            }
         },
     },
     // 计算属性
@@ -43,5 +70,5 @@ export default {
     // 一个对象，键是需要观察的表达式，值是对应回调函数。
     watch: {},
     // 组件列表
-    components: {},
+    components: { uniIcons },
 };
