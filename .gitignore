@@ -1,1 +1,4 @@
 unpackage/
+unpackage/dist/
+unpackage/dist/dev/
+unpackage/dist/dev/app-plus/app-view.js
