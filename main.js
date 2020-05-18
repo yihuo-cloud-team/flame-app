@@ -5,6 +5,7 @@ import './plugins/config.js';
 import './plugins/url.js';
 import './components.js';
 import './plugins/tools.js';
+import './plugins/Origin.js';
 import './plugins/filter.js';
 import Http from './plugins/Http.js';
 import Time from './plugins/time.js';

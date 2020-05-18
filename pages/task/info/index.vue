@@ -47,7 +47,7 @@
 		<view id="IssuerInfo" class="body" style="margin-bottom:10px;">
 			<view class="title" style="margin-bottom: 15px;">发布者信息</view>
 			<view class="user-contact">
-				<image :src="$getUrl(info.head_img)" class="cu-avatar radius xl" mode="widthFix" @tap="goUsersInfo(info.user_id)"></image>
+				<image :src="$getUrl(info.head_img)" class="cu-avatar radius xl" mode="widthFix" @tap="go(`/pages/user/userInfo/index?id=${info.user_id}`)"></image>
 				<view class="contact">
 					<view class="phone">{{ info.name }}</view>
 				</view>
@@ -79,7 +79,7 @@
 				<list style=" width: 100%;" @load="apply">
 					<cell class="item" v-for="(item, index) in list" :key="index" name="">
 						<view class="head">
-							<img class="img" @tap="goUsersInfo(info.user_id)" :src="item.display == 1 ? img : $getUrl(item.head_img)" alt />
+							<img class="img" @tap="go(`/pages/user/userInfo/index?id=${info.user_id}`)" :src="item.display == 1 ? img : $getUrl(item.head_img)" alt />
 							<view class="info">
 								<view class="name">{{ item.display == 1 ? item.user_id : item.name }}</view>
 								<view class="time">{{ item.add_time }}报名</view>
@@ -124,7 +124,7 @@
 			<template v-if="info.is_owner == 1">
 				<!-- 审核状态 -->
 				<template v-if="info.task_state == 1">
-					<button class="border-radius" type="primary" size="large" @tap.stop="goDeposit(info.task_order,info.price)">
+					<button class="border-radius" type="primary" size="large" @tap.stop="`/pages/amount/deposit?task_order=${task_order}&&price=${price}`">
 						待支付
 					</button>
 				</template>
@@ -143,7 +143,7 @@
 							<template v-if="info.is_up == 0">
 								<view class="box">
 									<span class="left"></span>
-									<span class="right" @tap="goRefund(info.id)">终止任务</span>
+									<span class="right" @tap="go(`/task/refund?id=${info.id}`)">终止任务</span>
 								</view>
 							</template>
 							<template v-if="info.is_up == 1">
@@ -172,7 +172,7 @@
 					</template>
 					<!-- 审核被驳回 -->
 					<template v-if="info.state == 2">
-						<button class="border-radius" type="primary" size="large" @tap="goEdit(info.id)">重新编辑</button>
+						<button class="border-radius" type="primary" size="large" @tap="go(`/pages/task/edit?id=${info.id}`)">重新编辑</button>
 					</template>
 				</template>
 			</template>
@@ -188,7 +188,7 @@
 						</template>
 						<template v-if="info.is_up == 1">
 							<template v-if="info.is_join == 0">
-								<button class="border-radius" type="primary" size="large" @tap="goEnroll(info.id)">参与项目</button>
+								<button class="border-radius" type="primary" size="large" @tap="go(`/pages/enroll?id=${info.id}`)">参与项目</button>
 							</template>
 							<template v-if="info.is_join == 1">
 								<button class="border-radius" type="primary" size="large" disabled>已申请</button>
@@ -221,7 +221,7 @@
 
 		<view class="fixed">
 			<view class="help">
-				<view class="help-btn" @tap="goHelp()">
+				<view class="help-btn" @tap="go('/pages/user/help')">
 					<text class="lg cuIcon-question" style="margin-right: 10px;"></text>
 					帮助
 				</view>

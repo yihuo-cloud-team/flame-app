@@ -101,6 +101,18 @@
 				"enablePullDownRefresh": true,
 				"backgroundTextStyle": "light"
 			}
+		},
+		{
+			"path": "pages/amount/record/index",
+			"style": {
+				"navigationBarTitleText": "提现记录"
+			}
+		},
+		{
+			"path": "pages/user/ranking/index",
+			"style": {
+				"navigationBarTitleText": "平台行业排行榜"
+			}
 		}
 	],
 	"globalStyle": {

@@ -15,7 +15,7 @@
         <uni-list-item title="我的发布" @click="go('/pages/task/release/index')"></uni-list-item>
         <uni-list-item title="我申请的任务" @click="go('/pages/task/apply/index')"></uni-list-item>
         <uni-list-item title="我接到的任务" @click="go('/pages/task/join/index')"></uni-list-item>
-        <uni-list-item title="平台行业排行榜"></uni-list-item>
+        <uni-list-item title="平台行业排行榜" @click="go('/pages/user/ranking/index')"></uni-list-item>
         <uni-list-item title="我的提现" @click="go('/pages/amount/cash/index')"></uni-list-item>
         <uni-list-item title="活动"></uni-list-item>
         <uni-list-item title="投诉与建议"></uni-list-item>
