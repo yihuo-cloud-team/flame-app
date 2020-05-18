@@ -1,7 +1,7 @@
 // @ts-nocheck
 import Vue from 'vue';
 import U from './url.js';
-import Random from '../lib/tool/Random.js';
+import Random from './lib/Random.js';
 import Time from './lib/time.js';
 
 // arrToStr

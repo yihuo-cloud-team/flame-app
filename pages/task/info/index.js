@@ -227,35 +227,8 @@ export default {
 				}
 			});
 		},
-		goUsersInfo(id) {
-			uni.navigateTo({
-				url: '/pages/user/userInfo?id=' + id,
-			});
-		},
-		goHelp() {
-			uni.navigateTo({
-				url: '/pages/user/help',
-			});
-		},
-		goDeposit(task_order, price) {
-			uni.navigateTo({
-				url: '/pages/amount/deposit?task_order=' + task_order + '&&price=' + price,
-			});
-		},
-		goEdit(id) {
-			uni.navigateTo({
-				url: '/pages/task/edit?id=' + id,
-			});
-		},
-		goEnroll(id) {
-			uni.navigateTo({
-				url: '/pages/enroll?id=' + id,
-			});
-		},
-		goRefund(id) {
-			uni.navigateTo({
-				url: '/task/refund?id=' + id,
-			});
+		go(url){
+			uni.navigateTo({url});
 		}
 	},
 	onLoad: function(option) {
