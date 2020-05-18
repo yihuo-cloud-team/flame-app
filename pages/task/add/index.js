@@ -30,19 +30,18 @@ export default {
 	methods: {
 		// 用于初始化一些数据
 		init() {
-			this.update();
+
 		},
 		// 用于更新一些数据
-		async update() {
+		async update(query) {
 			const res = await this.$http('/class/list', {});
 			if (res.code >= 0) {
 				this.classList = res.data;
 				this.form.task_type = this.classList[0].id;
 			}
-			if (!this.isApp) {
-				this.form.task_type = parseInt(this.$route.query.type)
+			if (query.type) {
+				this.form.task_type = parseInt(query.type)
 			}
-			// console.warn(res);
 		},
 		go(url) {
 			uni.navigateTo({
@@ -73,10 +72,10 @@ export default {
 		}
 	},
 	// 计算属性
+	onLoad(query) {
+		this.update(query);
+	},
 	computed: {
-		isApp() {
-			return typeof this.$route.query.type == 'undefined'
-		}
 	},
 	// 包含 Vue 实例可用过滤器的哈希表。
 	filters: {},

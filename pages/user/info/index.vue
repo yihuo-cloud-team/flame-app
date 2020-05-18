@@ -1,7 +1,7 @@
 <template>
   <view id="info">
     <view class="head">
-      <view class="user-info">
+      <view class="user-info" @click="go('/pages/user/userInfo/index')">
         <view class="img-box">
           <image class="user-img" :src="$getUrl(userInfo.head_img)" />
         </view>

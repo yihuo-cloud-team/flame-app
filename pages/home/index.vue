@@ -3,9 +3,12 @@
   <view class="container">
     <view class="search-box">
       <icon type="search" size="14" />
-      <input type="text" disabled @click="go('/pages/search/index')" placeholder="欢迎搜索更多任务" />
+      <div class="input">
+        <input type="text" disabled @click="go('/pages/search/index')" placeholder="欢迎搜索更多任务" />
+      </div>
     </view>
     <!--  -->
+    <ol-icon-nav class="icon-nav" @fnc="routers" :list="classList"></ol-icon-nav>
 
     <view class="title">项目动态</view>
 
@@ -69,13 +72,15 @@ export default {
         page_size: 10
       },
       list: [],
-      moveList: []
+      moveList: [],
+      classList: []
     };
   },
   methods: {
     init() {
       this.updata();
       this.http_dynamic();
+      this.httpClass();
     },
     async upload() {
       const file = await Upload.select();
@@ -99,10 +104,22 @@ export default {
         this.moveList = res.data;
       }
     },
+    async httpClass() {
+      const res = await this.$http("/class/list");
+      if (res.code >= 0) {
+        this.classList = res.data;
+      }
+    },
     go(url) {
       uni.navigateTo({
         url: url
       });
+    },
+    routers(data) {
+      console.warn(data);
+
+      // this.$router.push(`/task/add?type=${data.id}`);
+      this.go(`/pages/task/add/index?type=${data.id}`);
     }
   },
   onReachBottom() {
@@ -140,11 +157,13 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 10px;
-  input {
-    padding: 20px 10px;
-    line-height: 1;
+  .input {
+    padding: 10px;
     font-size: 16px;
   }
+}
+.icon-nav {
+  margin-bottom: 15px;
 }
 
 .r-card-list {
