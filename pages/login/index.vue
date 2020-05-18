@@ -11,8 +11,8 @@
 			<text @click="goAgreement" class="ment">《益火TKI网服务协议》</text>
 		</view>
 		
-		<button :disabled="!checked" type="warn" class="bottom-button" @click="wxLogin()">微信登入</button>
-		
+		<button :disabled="!checked" type="warn" class="bottom-button" @click="wxLogin()">微信登陆</button>
+		<button :disabled="!checked" type="warn" class="bottom-button" @click="go('/pages/login/telLogin/index')">手机号登陆</button>
 		<uni-popup id="popup" ref="popup" type="center">
 			<view class="popup">
 				{{msg}}

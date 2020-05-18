@@ -1,52 +1,37 @@
-import uniIcons from "@/components/uni-icons/uni-icons.vue"
 export default {
-	name: 'userInfo',
+	name: 'telLogin',
 	data() {
 		return {
-			userInfo: {
-				img_list:[],
-				like_list:[],
-			},
-			id : 0,
-			isMe: false,
+			userInfo: {},
+			msg: '',
+			checked: false,
+			isShow: false,
 		};
 	},
 	methods: {
 		// 用于初始化一些数据
-		init() {},
+		init() {
+			this.update();
+		},
 		// 用于更新一些数据
 		async update() {
-			let res = await this.$http('/user/save_info', {});
-			console.log(res)
-			if (res.code > 0) {
-				this.userInfo = res.data;
-			}
+			// const res = await this.$http('', {});
 		},
-		see(index) {
-			let arr = this.userInfo.img_list.map(url => this.$getUrl(url))
-			uni.previewImage({
-				current: index,
-				urls: arr
-			})
+		async submit() {
+			// _this.errPopup(error.errMsg);
 		},
-		go(url) {
-			uni.navigateTo({
-				url: url
-			})
+		getCode(){
+			//获取验证码
+		},
+		errPopup(msg) {
+			this.msg = msg;
+			this.$refs.popup.open();
 		}
-	},
-	onLoad:function(option) {
-		console.log(option.id);
-		this.id = option.id;
-		if (!option.id) {
-			this.isMe = true;
-		}
-		this.update();
 	},
 	// 计算属性
 	computed: {
-		get_id() {
-			return typeof this.$route.query.id == 'undefined'
+		jsonData: function(json) {
+			return JSON.stringify(this.userInfo)
 		}
 	},
 	// 包含 Vue 实例可用过滤器的哈希表。
@@ -77,7 +62,5 @@ export default {
 	// 一个对象，键是需要观察的表达式，值是对应回调函数。
 	watch: {},
 	// 组件列表
-	components: {
-		uniIcons
-	},
+	components: {},
 };
