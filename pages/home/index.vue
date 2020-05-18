@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import OlIconNav from "@/components/OlIconNav/OlIconNav.vue";
 import Upload from "../../plugins/Upload";
 export default {
   data() {
@@ -122,6 +123,7 @@ export default {
       this.go(`/pages/task/add/index?type=${data.id}`);
     }
   },
+  components: { OlIconNav },
   onReachBottom() {
     this.updata();
   },
