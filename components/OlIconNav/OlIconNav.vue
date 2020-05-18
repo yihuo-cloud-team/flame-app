@@ -11,7 +11,7 @@
             <uni-grid-item :key="n">
               <div class="item" @click="tiaozhuang(todo)">
                 <div class="img-box">
-                  <image class="img" :src="$getUrl(todo.icon)" />
+                  <img class="img" :src="$getUrl(todo.icon)" />
                 </div>
                 <div class="title">{{todo.name}}</div>
               </div>

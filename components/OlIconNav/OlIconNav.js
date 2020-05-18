@@ -19,7 +19,6 @@ export default {
         // 用于更新一些数据
         update() { },
         tiaozhuang(data) {
-            console.log(data)
             this.$emit('fnc', data)
         }
     },
