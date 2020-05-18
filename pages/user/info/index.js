@@ -18,6 +18,7 @@ export default {
             const res = await this.$http('/user/save_info', {});
             if (res.code > 0) {
                 this.userInfo = res.data;
+                uni.setStorageSync('userInfo', JSON.stringify(res.data))
             }
         },
         go(url) {

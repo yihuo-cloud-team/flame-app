@@ -4,7 +4,7 @@
       <div class="trends-list erect">
         <div
           class="item"
-          @click="$router.push(`/task/info?task_id=${item.id}`)"
+          @click="go(`/pages/task/info/index?task_id=${item.id}`)"
           v-for="item in list"
           :key="item"
           :title="item"

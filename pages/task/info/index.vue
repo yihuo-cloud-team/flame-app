@@ -79,7 +79,7 @@
 				<list style=" width: 100%;" @load="apply">
 					<cell class="item" v-for="(item, index) in list" :key="index" name="">
 						<view class="head">
-							<img class="img" @tap="go(`/pages/user/userInfo/index?id=${info.user_id}`)" :src="item.display == 1 ? img : $getUrl(item.head_img)" alt />
+							<img class="img" @tap="go(`/pages/user/userInfo/index?id=${item.user_id}`)" :src="item.display == 1 ? img : $getUrl(item.head_img)" alt />
 							<view class="info">
 								<view class="name">{{ item.display == 1 ? item.user_id : item.name }}</view>
 								<view class="time">{{ item.add_time }}报名</view>

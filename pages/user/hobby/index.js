@@ -1,9 +1,26 @@
 import uniIcons from "@/components/uni-icons/uni-icons.vue"
+import Upload from "../../../plugins/Upload";
 export default {
     name: 'hobby',
     data() {
         return {
-            userInfo: {}
+            userInfo: {},
+            show: false,
+            hobby: '',
+            starArr: [
+                '白羊座',
+                '金牛座',
+                '双子座',
+                '巨蟹座',
+                '狮子座',
+                '处女座',
+                '天秤座',
+                '天蝎座',
+                '射手座',
+                '摩羯座',
+                '水瓶座',
+                '双鱼座',
+            ]
         };
     },
     methods: {
@@ -39,6 +56,38 @@ export default {
 
             }
         },
+        async uploader() {
+            const file = await Upload.select();
+            const res = await Upload.send(file);
+            // this.src = res.data.url;
+            this.userInfo.img_list.push(res.data.url)
+            this.submit('添加成功')
+        },
+        subHobby() {
+            if (!this.hobby) {
+                uni.showToast({
+                    title: '请填写您的爱好',
+                    icon: 'none'
+                })
+                return false
+            }
+            this.userInfo.like_list.push({
+                color: this.get_rgba(),
+                text: this.hobby
+            })
+            this.submit('添加成功')
+            this.hobby = ''
+            this.show = false
+        },
+        get_rgba() {
+            let colorarr = ['#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399', '#DE93F3']
+            let r = Math.round(Math.random() * 5);
+            return colorarr[r];
+        },
+        subStar(e) {
+            this.userInfo.constellation = this.starArr[e.detail.value]
+            this.submit('保存成功')
+        }
     },
     // 计算属性
     computed: {},

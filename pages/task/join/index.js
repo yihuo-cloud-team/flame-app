@@ -5,7 +5,6 @@ export default {
     return {
       userInfo: null,
       list: [],
-      loading: false,
       finished: false,
       query: {
         page: 1,
@@ -17,12 +16,10 @@ export default {
   methods: {
     // 用于初始化一些数据
     init() {
-      this.update()
+      this.updata()
     },
     // 用于更新一些数据
-    async update() {
-      if (this.finished) return;
-      this.loading = true
+    async updata() {
       const res = await this.$http('/task/get/list', this.query);
       if (res.code > 0) {
         this.list = [...this.list, ...res.data];
@@ -33,8 +30,21 @@ export default {
       } else {
         this.finished = true;
       }
+      uni.stopPullDownRefresh();
     },
-
+    onReachBottom() {
+      this.updata();
+    },
+    onPullDownRefresh() {
+      this.list = [];
+      this.query.page = 1;
+      this.updata();
+    },
+    go(url) {
+      uni.navigateTo({
+        url: url
+      });
+    }
   },
   // 计算属性
   computed: {},
