@@ -11,7 +11,7 @@
 		{
 			"path": "pages/task/info/index",
 			"style": {
-				"navigationStyle": "任务详情"
+				"navigationBarTitleText": "任务详情"
 			}
 		},
 		{
@@ -23,7 +23,7 @@
 		{
 			"path": "pages/task/list/index",
 			"style": {
-				"navigationStyle": "custom",
+				"navigationBarTitleText": "最新动态",
 				"enablePullDownRefresh": true,
 				"backgroundTextStyle": "light"
 			}
@@ -31,7 +31,7 @@
 		{
 			"path": "pages/task/release/index",
 			"style": {
-				"navigationStyle": "custom",
+				"navigationBarTitleText": "我发布的",
 				"enablePullDownRefresh": true,
 				"backgroundTextStyle": "light"
 			}
@@ -39,7 +39,7 @@
 		{
 			"path": "pages/task/apply/index",
 			"style": {
-				"navigationStyle": "custom",
+				"navigationBarTitleText": "我申请的",
 				"enablePullDownRefresh": true,
 				"backgroundTextStyle": "light"
 			}
@@ -84,6 +84,22 @@
 			"path": "pages/amount/cash/index",
 			"style": {
 				"navigationBarTitleText": "我的提现"
+			}
+		},
+		{
+			"path": "pages/search/index",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": true,
+				"backgroundTextStyle": "light"
+			}
+		},
+		{
+			"path": "pages/task/join/index",
+			"style": {
+				"navigationBarTitleText": "接到的任务",
+				"enablePullDownRefresh": true,
+				"backgroundTextStyle": "light"
 			}
 		}
 	],

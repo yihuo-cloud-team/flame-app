@@ -3,7 +3,7 @@
   <view class="container">
     <view class="search-box">
       <icon type="search" size="14" />
-      <input type="text" disabled placeholder="欢迎搜索更多任务" />
+      <input type="text" disabled @click="go('/pages/search/index')" placeholder="欢迎搜索更多任务" />
     </view>
     <!--  -->
 

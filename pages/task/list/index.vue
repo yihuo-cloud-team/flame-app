@@ -36,8 +36,8 @@
             </view>
           </view>
         </view>
-        <view class="btn" v-if="finished">首页搜索更多内容</view>
       </view>
+      <view class="btn" v-if="finished">首页搜索更多内容</view>
     </view>
   </view>
 </template>

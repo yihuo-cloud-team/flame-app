@@ -1,0 +1,153 @@
+#search {
+  background-color: #F0F2F5;
+
+  .search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    .icon {
+      display: flex;
+      margin-right: 5px;
+    }
+
+    .input-box {
+      flex: 1;
+      border: 1px solid rgba($color: white, $alpha: 1);
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0px 1px 5px -2px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 8px;
+
+      .input {
+        font-size: 16px;
+      }
+    }
+
+    .btn {
+      margin: 0 10px;
+      font-size: 14px;
+      color: #101010;
+    }
+  }
+
+  .state-box {}
+
+  .trends-box {
+    flex: 1;
+    overflow: auto;
+
+  }
+
+  .trends-list {
+    // display: flex;
+    margin: 0 10px;
+
+    .item {
+      padding-right: 5px;
+      padding: 0 10px;
+
+      .panel {
+        background-color: #fff;
+
+        padding: 10px 0;
+        border: 1px solid rgba(255, 255, 255, 0);
+
+        .box-img {
+          width: 100px;
+          height: 65px;
+          margin-right: 10px;
+
+          .img {
+            width: 100%;
+            display: block;
+            padding-bottom: 65px;
+            background-size: cover;
+            background-position: center center;
+
+          }
+        }
+
+        .panel-body {
+
+          .title {
+            color: rgba(16, 16, 16, 1);
+            font-size: 14px;
+            margin-bottom: 3px;
+          }
+
+          .text {
+            display: flex;
+            justify-content: space-between;
+
+            .money {
+              color: rgba(255, 0, 0, 1);
+              font-size: 14px;
+            }
+          }
+
+          .subtitle {
+            color: rgba(135, 150, 168, 1);
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    &.erect {
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0);
+      background-color: #fff;
+
+      .panel {
+        display: flex;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+
+        .img {
+
+          margin-right: 10px;
+          height: 65px;
+          width: 100px;
+
+
+        }
+
+        .panel-body {
+          flex: 1;
+
+          .title-box {
+            display: flex;
+
+            .title {
+              flex: 1;
+              margin-right: 3px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+.btn-text {
+  text-align: center;
+  margin: 16px 0;
+  color: #969799;
+  font-size: 14px;
+  line-height: 24px;
+  border: 0 solid #ebedf0;
+}
+
+#search /deep/ {
+  .van-dropdown-menu__item {
+    justify-content: left;
+  }
+
+  .van-hairline--top-bottom::after {
+    border: none;
+  }
+}
