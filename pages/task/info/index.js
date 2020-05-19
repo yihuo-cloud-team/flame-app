@@ -49,7 +49,6 @@ export default {
 				// task_id: this.$route.query.task_id
 				task_id: this.task_id,
 			});
-			console.log(res)
 			if (res.code >= 0) {
 				this.info = res.data;
 			}
@@ -63,7 +62,6 @@ export default {
 				page: this.page,
 				page_size: this.page_size
 			});
-			console.log(res)
 			if (res.code > 0) {
 				this.loading = false;
 				this.list = [...this.list, ...res.data];
@@ -232,10 +230,11 @@ export default {
 		}
 	},
 	onLoad: function(option) {
-		console.log(option.id);
 		this.task_id = option.task_id;
 	},
-	
+	onNavigationBarButtonTap(option){
+		this.go('/pages/user/help/index');
+	},
 	// 计算属性
 	computed: {},
 	// 包含 Vue 实例可用过滤器的哈希表。

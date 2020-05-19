@@ -1,6 +1,5 @@
 {
-	"pages": [
-		{
+	"pages": [{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "益火TKI",
@@ -11,7 +10,16 @@
 		{
 			"path": "pages/task/info/index",
 			"style": {
-				"navigationBarTitleText": "任务详情"
+				"navigationBarTitleText": "任务详情",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+								"text": "\ue603",
+								"fontSrc": "/static/iconfont.ttf",
+								"fontSize": "22px"
+						}]
+					}
+				}
 			}
 		},
 		{
@@ -113,10 +121,30 @@
 			"style": {
 				"navigationBarTitleText": "平台行业排行榜"
 			}
-		},{
+		}, {
 			"path": "pages/login/telLogin/index",
 			"style": {
 				"navigationBarTitleText": "手机号登陆"
+			}
+		}, {
+			"path": "pages/login/save/index",
+			"style": {
+				"navigationBarTitleText": "登录信息"
+			}
+		}, {
+			"path": "pages/user/mention/index",
+			"style": {
+				"navigationBarTitleText": "投诉与建议"
+			}
+		}, {
+			"path": "pages/user/help/index",
+			"style": {
+				"navigationBarTitleText": "帮助说明"
+			}
+		}, {
+			"path": "pages/paper/info/index",
+			"style": {
+				"navigationBarTitleText": "帮助说明"
 			}
 		}
 	],
@@ -131,8 +159,7 @@
 		"selectedColor": "#4289db",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/home/index",
 				"iconPath": "static/image/home.png",
 				"selectedIconPath": "static/image/home_HL.png",

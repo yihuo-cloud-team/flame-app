@@ -17,9 +17,9 @@
         <uni-list-item title="我接到的任务" @click="go('/pages/task/join/index')"></uni-list-item>
         <uni-list-item title="平台行业排行榜" @click="go('/pages/user/ranking/index')"></uni-list-item>
         <uni-list-item title="我的提现" @click="go('/pages/amount/cash/index')"></uni-list-item>
-        <uni-list-item title="活动"></uni-list-item>
-        <uni-list-item title="投诉与建议"></uni-list-item>
-        <uni-list-item title="帮助说明"></uni-list-item>
+        <!-- <uni-list-item title="活动"></uni-list-item> -->
+        <uni-list-item title="投诉与建议" @click="go('/pages/user/mention/index')"></uni-list-item>
+        <uni-list-item title="帮助说明" @click="go('/pages/user/help/index')"></uni-list-item>
         <uni-list-item title="退出登录"></uni-list-item>
       </uni-list>
     </view>
