@@ -1,0 +1,29 @@
+#mention {
+  padding: 10px;
+	#textarea-box{
+		background-color: #FFF;
+		padding: 10px;
+		margin-bottom: 15px;
+		#inp{
+			min-height: 120rpx;
+			font-size: 24rpx;
+			width: 100%;
+			text-justify:inter-ideograph;
+		}
+	}
+  .btn {
+    height: 46px;
+    border-radius: 4px;
+    margin: 0 auto;
+    background-color: rgba(66, 137, 219, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+    margin-bottom: 30px;
+  }
+}
+
+#mention /deep/ {}

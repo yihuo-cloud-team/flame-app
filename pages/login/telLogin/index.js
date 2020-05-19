@@ -6,6 +6,11 @@ export default {
 			msg: '',
 			checked: false,
 			isShow: false,
+			phone: '',
+			code: '',
+			timer: null,
+			timerNum: 60,
+			isplay: false,
 		};
 	},
 	methods: {
@@ -13,15 +18,56 @@ export default {
 		init() {
 			this.update();
 		},
+		initTimer() {
+			this.timerNum = 60;
+			this.isplay = false;
+			this.timer = null;
+		},
 		// 用于更新一些数据
 		async update() {
 			// const res = await this.$http('', {});
 		},
 		async submit() {
-			// _this.errPopup(error.errMsg);
+			const res = await this.$http('/auth/app_login', {
+				phone: this.phone,
+				code: this.code
+			});
+			if (res.code >= 1) {
+				uni.setStorageSync('jwt', res.jwt);
+				uni.setStorageSync('userInfo', JSON.stringify(res.data));
+				if (res.data.name) {
+					uni.reLaunch({
+						url: '/pages/home/index',
+					});
+					return
+				}
+				uni.reLaunch({
+					url: '/pages/login/save/index',
+				});
+			} else {
+				this.errPopup('验证失败');
+			}
 		},
-		getCode(){
+		async getCode() {
 			//获取验证码
+			const res = await this.$http('/auth/get_code', {
+				phone: this.phone
+			});
+			console.log(res)
+			if (res.code >= 1) {
+				this.isplay = true;
+				this.timer = setInterval(()=>{
+					this.timerNum--
+					if(this.timerNum<0){
+						this.initTimer();
+					}
+				}, 1000);
+				uni.showToast({
+					title: '发送成功',
+				});
+			} else {
+				this.errPopup('发送失败');
+			}
 		},
 		errPopup(msg) {
 			this.msg = msg;
@@ -30,8 +76,11 @@ export default {
 	},
 	// 计算属性
 	computed: {
-		jsonData: function(json) {
-			return JSON.stringify(this.userInfo)
+		btnText: function() {
+			if (this.isplay) {
+				return this.timerNum
+			}
+			return '获取验证码'
 		}
 	},
 	// 包含 Vue 实例可用过滤器的哈希表。

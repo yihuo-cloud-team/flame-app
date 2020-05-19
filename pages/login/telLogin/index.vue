@@ -1,23 +1,15 @@
 <template>
 	<view id="telLogin">
-	    <view id="tel-box">
-			<view id="input-box">
-				<input type="tel" placeholder="手机号">
-			</view>
-			<button class="btn" type="warn" @click="getCode()">获取验证码</button>
+		<view id="tel-box">
+			<view class="input-box"><input type="tel" v-model="phone" placeholder="手机号" /></view>
+			<button class="btn" type="warn" @click="getCode()" :disabled="isplay">{{btnText}}</button>
 		</view>
-		
-		<button type="primary">立刻绑定</button>
-		
-		
+		<view class="input-box" style="margin-bottom: 20rpx;"><input type="text" v-model="code" placeholder="验证码" /></view>
+		<button type="primary" @tap='submit()'>立刻绑定</button>
 		<uni-popup id="popup" ref="popup" type="center">
-			<view class="popup">
-				{{msg}}
-			</view>
+			<view class="popup">{{ msg }}</view>
 		</uni-popup>
-		
-		
-	  </view>
+	</view>
 </template>
 <script src="./index.js"></script>
 <style lang="scss" scoped>

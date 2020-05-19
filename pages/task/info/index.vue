@@ -219,14 +219,14 @@
 			</template>
 		</view>
 
-		<view class="fixed">
+		<!-- <view class="fixed">
 			<view class="help">
-				<view class="help-btn" @tap="go('/pages/user/help')">
+				<view class="help-btn" @tap="go('/pages/user/help/index')">
 					<text class="lg cuIcon-question" style="margin-right: 10px;"></text>
 					帮助
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 <script src="./index.js"></script>
