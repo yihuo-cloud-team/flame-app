@@ -14,20 +14,33 @@ export default {
         task_state: '',
         a: ''
       },
-      info: {}
+      info: {},
+      type: {
+        name: "全部分类",
+        id: ''
+      },
+      state: {
+        name: "所有进度",
+        id: ''
+      }
     };
+  },
+  onShow() {
+    if (uni.getStorageSync('task_type')) {
+      this.type = JSON.parse(uni.getStorageSync('task_type'))
+      this.query.task_type = JSON.parse(uni.getStorageSync('task_type')).id
+    }
+    if (uni.getStorageSync('task_state')) {
+      this.state = JSON.parse(uni.getStorageSync('task_state'))
+      this.query.task_state = JSON.parse(uni.getStorageSync('task_state')).id
+    }
+    this.resetupdata()
   },
   methods: {
     // 用于初始化一些数据
     init() {
       // this.httpClass();
       this.getAddress();
-      this.$nextTick(res => {
-        // if (this.$route.query.id) {
-        //   this.query.task_type = Number(this.$route.query.id);
-        // }
-      })
-      this.updata()
       this.httpConfig();
     },
     async httpConfig() {
@@ -128,7 +141,10 @@ export default {
   // keep-alive 组件停用时调用。
   deactivated() { },
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
-  beforeDestroy() { },
+  beforeDestroy() {
+    uni.removeStorageSync('task_type');
+    uni.removeStorageSync('task_state');
+  },
   //Vue 实例销毁后调用。
   destroyed() { },
   // 当捕获一个来自子孙组件的错误时被调用。

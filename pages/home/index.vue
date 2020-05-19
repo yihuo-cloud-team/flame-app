@@ -27,6 +27,7 @@
             <view class="cu-tag line-orange tag" v-if="item.task_state==0">招募中</view>
             <view class="cu-tag line-orange tag" v-if="item.task_state==2">开发中</view>
             <view class="cu-tag line-orange tag" v-if="item.task_state==4">完成</view>
+            <view class="cu-tag line-orange tag" v-if="item.task_state==5">待确认</view>
           </view>
           <view class="time">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</view>
         </view>
@@ -55,6 +56,7 @@
         </view>
       </view>
     </view>
+    <div class="btn-text" v-if="finished">没有更多了</div>
 
     <!--  -->
     <!-- <view class="cu-tag bg-red">默认</view> -->
@@ -74,7 +76,8 @@ export default {
       },
       list: [],
       moveList: [],
-      classList: []
+      classList: [],
+      finished: false
     };
   },
   methods: {
@@ -93,6 +96,11 @@ export default {
       if (res.code > 0) {
         this.list = [...this.list, ...res.data];
         this.query.page++;
+        if (res.total < this.query.page_size) {
+          this.finished = true;
+        }
+      } else {
+        this.finished = true;
       }
       uni.stopPullDownRefresh();
     },
@@ -265,6 +273,14 @@ export default {
       text-align: right;
     }
   }
+}
+.btn-text {
+  text-align: center;
+  margin: 16px 0;
+  color: #969799;
+  font-size: 14px;
+  line-height: 24px;
+  border: 0 solid #ebedf0;
 }
 </style>
 

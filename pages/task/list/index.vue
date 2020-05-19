@@ -25,6 +25,7 @@
                       <view class="cu-tag line-orange tag" v-if="item.task_state==0">招募中</view>
                       <view class="cu-tag line-orange tag" v-if="item.task_state==2">进行中</view>
                       <view class="cu-tag line-orange tag" v-if="item.task_state==4">完成</view>
+                      <view class="cu-tag line-orange tag" v-if="item.task_state==5">待确认</view>
                     </template>
                   </template>
                 </view>

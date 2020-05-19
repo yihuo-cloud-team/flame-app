@@ -1,0 +1,22 @@
+#indexes {
+    .title {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        min-height: 25px;
+
+        .img {
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .select {
+        background-color: #07c160;
+        padding: 0 5px;
+        border-radius: 50px;
+    }
+}
+
+#indexes /deep/ {}

@@ -1,6 +1,15 @@
 #search {
   background-color: #F0F2F5;
 
+  .tag {
+    color: #07c160;
+
+    // border-radius: 4px;
+    &:after {
+      border-radius: 8px;
+    }
+  }
+
   .search-box {
     display: flex;
     justify-content: center;
@@ -33,7 +42,31 @@
     }
   }
 
-  .state-box {}
+  .state {
+    padding: 10px;
+    padding-top: 0;
+
+    .state-box {
+      background-color: #fff;
+      border-radius: 4px;
+      display: flex;
+
+      .type-state {
+        padding: 20px;
+        flex: 1;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .task-state {
+        flex: 1;
+        padding: 20px;
+        text-align: center;
+        font-size: 16px;
+      }
+
+    }
+  }
 
   .trends-box {
     flex: 1;
