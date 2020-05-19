@@ -11,7 +11,7 @@ import Http from './plugins/Http.js';
 import Time from './plugins/time.js';
 import jwt from "./plugins/jwt.js";
 
-uni.setStorageSync("jwt", jwt.jwt);
+// uni.setStorageSync("jwt", jwt.jwt);
 Vue.prototype.$http = Http;
 
 Vue.config.productionTip = false
