@@ -1,10 +1,10 @@
 
 <template>
   <view class="container">
-    <view class="search-box">
+    <view class="search-box" @click="go('/pages/search/index')">
       <icon type="search" size="14" />
       <div class="input">
-        <input type="text" disabled @click="go('/pages/search/index')" placeholder="欢迎搜索更多任务" />
+        <input type="text" disabled placeholder="欢迎搜索更多任务" />
       </div>
     </view>
     <!--  -->
