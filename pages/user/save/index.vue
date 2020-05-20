@@ -1,8 +1,13 @@
 <template>
   <view id="save">
     <view class="head">
-      <view class="head-img">
+      <view class="head-img" v-if="form.head_img" @click="uploader">
         <image class="img" :src="$getUrl(form.head_img)" />
+      </view>
+      <view class="img-none" v-else @click="uploader">
+        <view class="uploader">
+          <uni-icons class="icons" type="camera" size="30" color="#fff"></uni-icons>
+        </view>
       </view>
     </view>
     <view class="user-info">
@@ -25,11 +30,11 @@
             <input placeholder="请输入联系方式" v-model="form.phone" name="input" />
           </view>
           <view class="cu-form-group">
-            <view class="title">日期选择</view>
+            <view class="title">生日</view>
             <picker
               mode="date"
               :value="form.birthday"
-              start="2015-09-01"
+              start="1950-09-01"
               end="2025-09-01"
               @change="DateChange"
             >
