@@ -3,7 +3,6 @@ export default {
 	data() {
 		return {
 			userInfo: {},
-			msg: '',
 			checked: false,
 			isShow: false,
 			phone: '',
@@ -45,7 +44,10 @@ export default {
 					url: '/pages/login/save/index',
 				});
 			} else {
-				this.errPopup('验证失败');
+				uni.showModal({
+					title: '提示',
+					content: '验证失败'
+				})
 			}
 		},
 		async getCode() {
@@ -66,12 +68,11 @@ export default {
 					title: '发送成功',
 				});
 			} else {
-				this.errPopup('已超出发送次数，请稍后再试');
+				uni.showModal({
+					title: '提示',
+					content: '已超出发送次数，请稍后再试'
+				})
 			}
-		},
-		errPopup(msg) {
-			this.msg = msg;
-			this.$refs.popup.open();
 		},
 		back() {
 			uni.navigateBack();
