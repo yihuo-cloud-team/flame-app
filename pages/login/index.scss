@@ -5,16 +5,19 @@
     overflow: hidden;
 
     .text {
-        font-size: 20px;
+        font-size: 44rpx;
         color: #101010;
         text-align: center;
-        margin-top: 150px;
+        margin-top: 20vh;
     }
 	
 	.radio{
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	.label-text{
+		font-size: 36rpx;
 	}
     .people {
         display: flex;
