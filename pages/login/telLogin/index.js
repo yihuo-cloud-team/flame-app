@@ -66,7 +66,7 @@ export default {
 					title: '发送成功',
 				});
 			} else {
-				this.errPopup('发送失败');
+				this.errPopup('当天已超发送次数');
 			}
 		},
 		errPopup(msg) {
