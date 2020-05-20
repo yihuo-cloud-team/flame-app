@@ -5,6 +5,9 @@
         <image class="img" mode="aspectFill" :src="$getUrl(item)" />
       </swiper-item>
     </swiper>
+    <view class="none-img_list" v-else @click="go('/pages/user/hobby/index')">
+      <uni-icons class="icons" type="camera" size="80" color="#fff"></uni-icons>
+    </view>
     <view class="info">
       <view class="user-img">
         <image :src="$getUrl(userInfo.head_img)" class="img" />
