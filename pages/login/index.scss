@@ -63,6 +63,10 @@
             justify-content: center;
             color: #fff;
             margin-right: 20px;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 
