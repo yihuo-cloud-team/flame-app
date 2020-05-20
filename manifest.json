@@ -40,7 +40,9 @@
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
                 ]
             },
-            "ios" : {},
+            "ios" : {
+                "idfa" : false
+            },
             "sdkConfigs" : {
                 "oauth" : {},
                 "ad" : {},
