@@ -6,7 +6,7 @@ import Time from './lib/time.js';
 
 // arrToStr
 
-Vue.prototype.$getUrl = function(url = '') {
+Vue.prototype.$getUrl = function (url = '') {
 	if (!url) return '';
 	if (url.indexOf('./') >= 0) return url;
 	let _url;
@@ -19,7 +19,7 @@ Vue.prototype.$getUrl = function(url = '') {
 	return _url;
 }
 
-Vue.prototype.go = function(url = '') {
+Vue.prototype.go = function (url = '') {
 	uni.navigateTo({
 		url: url
 	})
@@ -30,7 +30,7 @@ Vue.prototype.go = function(url = '') {
 // // 例子：
 // // (new Date()).Format("yyyy-MM-dd.S") ==> 2006-07-02 08:09:04.423
 // // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
-Date.prototype.Format = function(fmt) { //author: meizz
+Date.prototype.Format = function (fmt) { //author: meizz
 	const o = {
 		"M+": this.getMonth() + 1, //月份
 		"d+": this.getDate(), //日
@@ -59,7 +59,7 @@ Vue.prototype.$getRandom = new Random().getRandom;
 Vue.prototype.$handleTime = new Time().pastTime;
 
 //复制内容
-Vue.prototype.$copy = function(str) {
+Vue.prototype.$copy = function (str) {
 
 	var oInput = document.createElement('input');
 	oInput.value = str;
@@ -70,13 +70,14 @@ Vue.prototype.$copy = function(str) {
 }
 
 
-Vue.prototype.$isPower = function(..._) {
+Vue.prototype.$isPower = function (..._) {
 	const powers = this.$store.state.power.list;
 	return _.filter(el => powers.indexOf(el) >= 0).length > 0;
 }
 
 
 
-Vue.prototype.$back = function(go = -1) {
-	this.$router.go(go);
+Vue.prototype.$back = function (go = -1) {
+
+
 }

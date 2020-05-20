@@ -5,9 +5,9 @@ export default {
   onLaunch: function() {
     // uni.clearStorageSync();
     if (!uni.getStorageSync("jwt")) {
-      uni.reLaunch({
-        url: "/pages/login/index"
-      });
+      // uni.reLaunch({
+      //   url: "/pages/login/index"
+      // });
     }
     Vue.prototype.ColorList = [
       {

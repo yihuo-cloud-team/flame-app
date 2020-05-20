@@ -136,7 +136,7 @@
 		{
 			"path": "pages/login/telLogin/index",
 			"style": {
-				"navigationBarTitleText": "手机号登陆"
+				"navigationStyle": "custom"
 			}
 		},
 		{
