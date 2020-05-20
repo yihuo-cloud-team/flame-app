@@ -23,6 +23,12 @@ export default {
             uni.navigateTo({
                 url: url
             })
+        },
+        signOut() {
+            uni.clearStorageSync()
+            uni.reLaunch({
+                url: "/pages/login/index"
+            });
         }
     },
     onShow() {

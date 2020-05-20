@@ -1,3 +1,4 @@
+import Upload from "../../../plugins/Upload";
 export default {
     name: 'save',
     data() {
@@ -42,7 +43,13 @@ export default {
                 });
                 this.$router.go(-1);
             }
-        }
+        },
+        async uploader() {
+            const file = await Upload.select();
+            const res = await Upload.send(file);
+            // this.src = res.data.url;
+            this.form.head_img = res.data.url
+        },
     },
     // 计算属性
     computed: {},

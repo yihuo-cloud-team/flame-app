@@ -20,7 +20,7 @@
         <!-- <uni-list-item title="活动"></uni-list-item> -->
         <uni-list-item title="投诉与建议" @click="go('/pages/user/mention/index')"></uni-list-item>
         <uni-list-item title="帮助说明" @click="go('/pages/user/help/index')"></uni-list-item>
-        <uni-list-item title="退出登录"></uni-list-item>
+        <uni-list-item title="退出登录" @click="signOut"></uni-list-item>
       </uni-list>
     </view>
   </view>
