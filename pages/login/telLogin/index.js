@@ -6,7 +6,7 @@ export default {
 			msg: '',
 			checked: false,
 			isShow: false,
-			phone: '17621643903',
+			phone: '',
 			code: '',
 			timer: null,
 			timerNum: 60,
