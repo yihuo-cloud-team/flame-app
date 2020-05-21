@@ -1,6 +1,6 @@
 <template>
   <div id="join">
-    <div class="trends-box" v-if="this.list.length > 0">
+    <div class="trends-box" v-if="list.length > 0">
       <div class="trends-list erect">
         <div
           class="item"
@@ -34,7 +34,7 @@
       </div>
       <div class="btn-text" v-if="finished">没有更多了</div>
     </div>
-    <div class="empty" v-if="this.list.length < 1 && finished">
+    <div class="empty" v-if="list.length < 1 && finished">
       <div class="empty-img">
         <image class="img" src="../../../static/image/empty-image-default.png" />
       </div>

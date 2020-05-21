@@ -6,9 +6,15 @@
         {{district}}
       </div>
       <view class="input-box">
-        <input type="text" v-model="query.search" class="input" :placeholder="info.value" />
+        <input
+          type="text"
+          v-model="query.search"
+          class="input"
+          @confirm="resetupdata"
+          :placeholder="info.value"
+        />
       </view>
-      <div class="btn" @click="resetupdata">筛选</div>
+      <div class="btn" @click="resetupdata">搜索</div>
     </div>
     <div class="state">
       <div class="state-box">

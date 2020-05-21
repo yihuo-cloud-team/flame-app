@@ -1,6 +1,6 @@
 <template>
   <view id="list">
-    <view class="trends-box" v-if="this.list.length > 0">
+    <view class="trends-box" v-if="list.length > 0">
       <view class="trends-list erect">
         <view
           class="item"
@@ -40,7 +40,7 @@
       </view>
       <view class="btn" v-if="finished">首页搜索更多内容</view>
     </view>
-    <div class="empty" v-if="this.list.length < 1 && finished">
+    <div class="empty" v-if="list.length < 1 && finished">
       <div class="empty-img">
         <image class="img" src="../../../static/image/empty-image-default.png" />
       </div>

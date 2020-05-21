@@ -5,9 +5,23 @@
         <image class="img" mode="aspectFill" :src="$getUrl(item)" />
       </swiper-item>
     </swiper>
-    <view class="none-img_list" v-else @click="go('/pages/user/hobby/index')">
-      <uni-icons class="icons" type="camera" size="80" color="#fff"></uni-icons>
+    <view v-else>
+      <view
+        class="none-img_list"
+        v-if="user_id == userInfo.id"
+        @click="go('/pages/user/hobby/index')"
+      >
+        <uni-icons class="icons" type="camera" size="80" color="#fff"></uni-icons>
+      </view>
+      <view class="giass" v-else>
+        <img
+          class="img"
+          src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2765424182,45538256&fm=26&gp=0.jpg"
+          alt
+        />
+      </view>
     </view>
+
     <view class="info">
       <view class="user-img">
         <image :src="$getUrl(userInfo.head_img)" class="img" />

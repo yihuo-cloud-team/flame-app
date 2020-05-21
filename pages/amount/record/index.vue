@@ -1,11 +1,14 @@
 <template>
   <view id="record">
-    <!-- <view class="date">
+    <view class="date">
       <view class="left" @click="showPopup">
         <view class="footer-left">开始时间</view>
-        <view class="footer-right" style="background-color:#AAC4FD">{{currentDate.Format('yyyy-MM')}}</view>
+        <view
+          class="footer-right"
+          style="background-color:#AAC4FD"
+        >{{currentDate.Format('yyyy-MM')}}</view>
       </view>
-      <van-popup v-model="show" position="bottom" :style="{height:'200px'}">
+      <!-- <van-popup v-model="show" position="bottom" :style="{height:'200px'}">
         <van-datetime-picker
           v-model="currentDate"
           type="year-month"
@@ -13,27 +16,20 @@
           @confirm="start"
           @cancel="show=false"
         />
-      </van-popup>
+      </van-popup>-->
       <view class="left">
-        <van-dropdown-menu>
+        <view>全部</view>
+        <!-- <van-dropdown-menu>
           <van-dropdown-item
             v-model="form.type"
             :disabled="shows"
             @change="select"
             :options="option1"
           />
-        </van-dropdown-menu>
+        </van-dropdown-menu>-->
       </view>
-    </view> -->
-    <list
-      class="panel-list"
-      v-model="loading"
-      :finished="finished"
-      :offset="3000"
-      :immediate-check="false"
-      finished-text="没有更多了"
-      @load="loadMore()"
-    >
+    </view>
+    <view class="panel-list" v-if="list.length > 0">
       <view class="panel-item" v-for="(item,index) in list" :key="index">
         <view class="top">
           <view class="top-left" v-if="item.type==1">收入</view>
@@ -53,7 +49,14 @@
           </view>
         </view>
       </view>
-    </list>
+      <view class="btn-text" v-if="finished">没有更多记录了</view>
+    </view>
+    <div class="empty" v-if="list.length < 1 && finished">
+      <div class="empty-img">
+        <image class="img" src="../../../static/image/empty-image-default.png" />
+      </div>
+      <p class="empty__description">无记录</p>
+    </div>
   </view>
 </template>
 <script src="./index.js"></script>

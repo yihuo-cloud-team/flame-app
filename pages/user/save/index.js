@@ -41,7 +41,11 @@ export default {
                     title: "修改成功",
                     icon: "none"
                 });
-                this.$router.go(-1);
+                setTimeout(() => {
+                    uni.navigateBack({
+                        delta: 1
+                    })
+                }, 500);
             }
         },
         async uploader() {

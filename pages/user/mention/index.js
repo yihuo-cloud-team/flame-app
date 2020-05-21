@@ -15,24 +15,29 @@ export default {
         async update() {
             // const res = await this.$http.post('', {});
         },
-        async submit(){
-            
-            if(this.message.replace(/(^\s*)|(\s*$)/g, "")==''){
-				uni.showToast({
-				    title: '输入内容不得为空',
-				    icon: 'none'
-				})
+        async submit() {
+
+            if (this.message.replace(/(^\s*)|(\s*$)/g, "") == '') {
+                uni.showToast({
+                    title: '输入内容不得为空',
+                    icon: 'none'
+                })
                 return false;
             }
-            const res = await this.$http('/suggest/save', {text:this.message});
-                if(res.code>=0){
-					uni.showToast({
-					    title: '发表成功',
-					})
-                    this.$router.go(-1);
-                }else{
-                    this.$toast(res.msg);
-                }
+            const res = await this.$http('/suggest/save', { text: this.message });
+            if (res.code >= 0) {
+                uni.showToast({
+                    title: '发表成功',
+                })
+                setTimeout(() => {
+                    uni.navigateBack({
+                        delta: 1
+                    })
+                }, 500);
+
+            } else {
+                this.$toast(res.msg);
+            }
         }
     },
     // 计算属性

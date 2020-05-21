@@ -6,11 +6,10 @@ export default {
       form: {
         type: "",
         page: 1,
-        page_size: 10,
+        page_size: 15,
         times: [new Date(new Date().getFullYear(), new Date().getMonth(), 1).Format('yyyy-MM-dd'), new Date().Format('yyyy-MM-dd')],
       },
       list: [
-
       ],
       xi: false,
       loading: false,
@@ -18,23 +17,23 @@ export default {
       shows: false,
       show: false,
       option1: [{
-          text: '全部',
-          value: ""
-        },
-        {
-          text: '收入',
-          value: 1
-        },
-        {
-          text: '支出',
-          value: 2
-        }
+        text: '全部',
+        value: ""
+      },
+      {
+        text: '收入',
+        value: 1
+      },
+      {
+        text: '支出',
+        value: 2
+      }
       ],
       currentDate: new Date()
     };
   },
-  onLoad: function(option) {
-  	this.form.type = option.type;
+  onLoad: function (option) {
+    this.form.type = option.type;
   },
   methods: {
     // 用于初始化一些数据
@@ -42,20 +41,24 @@ export default {
       if (this.form.type) {
         this.form.type = 2
       }
-      this.update();
+      this.updata();
     },
     // 用于更新一些数据
-    async update() {
+    async updata() {
       try {
         this.loading = true;
         const res = await this.$http('/budget/list', this.form);
-		console.log(res)
         if (res.code > 0) {
           this.list = [...this.list, ...res.data];
+          this.form.page++
           this.loading = false;
+          if (res.total < this.form.page_size) {
+            this.finished = true;
+          }
         } else {
           this.finished = true;
         }
+        uni.stopPullDownRefresh();
       } catch (error) {
 
       }
@@ -71,11 +74,6 @@ export default {
       }
       return value;
 
-    },
-    loadMore() {
-      this.finished = false;
-      this.form.page = ++this.form.page;
-      this.update();
     },
     select(e) {
 
@@ -96,6 +94,17 @@ export default {
       this.form.times[1] = monthEndDate;
       this.update();
     },
+    onReachBottom() {
+      this.updata();
+    },
+    resetupdata() {
+      this.list = [];
+      this.form.page = 1;
+      this.updata();
+    },
+    onPullDownRefresh() {
+      this.resetupdata()
+    },
 
   },
   // 计算属性
@@ -103,9 +112,9 @@ export default {
   // 包含 Vue 实例可用过滤器的哈希表。
   filters: {},
   // 在实例创建完成后被立即调用
-  created() {},
+  created() { },
   // 在挂载开始之前被调用：相关的 render 函数首次被调用。
-  beforeMount() {},
+  beforeMount() { },
   // el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
   mounted() {
 
@@ -114,17 +123,17 @@ export default {
     });
   },
   // 数据更新时调用，发生在虚拟 DOM 打补丁之前。
-  beforeUpdate() {},
+  beforeUpdate() { },
   // keep-alive 组件激活时调用。
-  activated() {},
+  activated() { },
   // keep-alive 组件停用时调用。
-  deactivated() {},
+  deactivated() { },
   // 实例销毁之前调用。在这一步，实例仍然完全可用。
-  beforeDestroy() {},
+  beforeDestroy() { },
   //Vue 实例销毁后调用。
-  destroyed() {},
+  destroyed() { },
   // 当捕获一个来自子孙组件的错误时被调用。
-  errorCaptured() {},
+  errorCaptured() { },
   // 包含 Vue 实例可用指令的哈希表。
   directives: {},
   // 一个对象，键是需要观察的表达式，值是对应回调函数。

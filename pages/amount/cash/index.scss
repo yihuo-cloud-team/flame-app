@@ -1,7 +1,5 @@
-
 #cash {
   background-color: #F0F2F5;
-  height: 100vh;
 }
 
 .panel {
@@ -11,31 +9,34 @@
     height: 117px;
     background-color: #4289DB;
     padding-left: 22px;
-  
-    .left{
+
+    .left {
       flex: 1;
+
       .money-text {
         padding-top: 31px;
         font-size: 12px;
       }
-  
+
       .money-num {
         margin-top: 15px;
         font-size: 28px;
       }
     }
-    .right{
+
+    .right {
       flex: 1;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-   
+
       padding-right: 20px;
-      .text{
+
+      .text {
         font-size: 14px;
       }
     }
-  
+
   }
 
   .panel-cash {
@@ -70,52 +71,62 @@
 }
 
 
-.tixian{
+.tixian {
   padding: 15px;
-  .title{
-      padding: 10px 0;
+
+  .title {
+    padding: 10px 0;
   }
-	.btn-box{
-		margin: 0 10rpx;
-	}
-	.input-box{
-		padding: 14rpx 20rpx;
-		background: #FFF;
-	}
+
+  .btn-box {
+    margin: 0 10rpx;
+  }
+
+  .input-box {
+    padding: 14rpx 20rpx;
+    background: #FFF;
+  }
+
   .checkb {
-      display: flex;
-      flex-wrap: wrap;
-      min-height: 40px;
-      justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 40px;
+    justify-content: flex-start;
 
 
-      .box {
-        flex: 1;
-        width: 45px;
-        margin: 0px 10px;
-        display: inline-block;
-        font-size: 13px;
-        border-radius: 4px;
-        line-height: 28px;
-        text-align: center;
-        margin-right: 5px;
-        background-color: #eee;
-        color: black;
+    .box {
+      flex: 1;
+      width: 45px;
+      margin: 0px 10px;
+      display: inline-block;
+      font-size: 13px;
+      border-radius: 4px;
+      line-height: 28px;
+      text-align: center;
+      margin-right: 5px;
+      background-color: #eee;
+      color: black;
 
-        &.active {
-          background-color: #4289DB;
-          color: white;
-        }
+      &.active {
+        background-color: #4289DB;
+        color: white;
       }
-
     }
 
-  .box{
-      display: flex;
-      justify-content: flex-end;
-      .btn{
-          font-size: 13px;
-      }
   }
- 
+
+  .btn {
+    height: 46px;
+    border-radius: 4px;
+    margin: 0 auto;
+    background-color: rgba(66, 137, 219, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0);
+    margin: 20px 0;
+  }
+
 }
