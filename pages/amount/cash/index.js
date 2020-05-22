@@ -36,25 +36,25 @@ export default {
 		async submit() {
 			console.log(this.query)
 			if (this.query.account == '') {
-				uni.showToast({title:'请输入卡号或者微信号',icon:'none'})
+				uni.showToast({ title: '请输入卡号或者微信号', icon: 'none' })
 				return false
 			}
 			if (this.query.real_name == '') {
-				uni.showToast({title:'请输入真实姓名',icon:'none'})
+				uni.showToast({ title: '请输入真实姓名', icon: 'none' })
 				return false
 			}
 			if (this.query.money == '') {
-				uni.showToast({title:'请输入金额',icon:'none'})
+				uni.showToast({ title: '请输入金额', icon: 'none' })
 				return false
 			}
 			this.disabled = true;
-			
-			let toast=uni.showToast({title:'申请中',icon:'loading'});
-			
+
+			let toast = uni.showToast({ title: '申请中', icon: 'loading' });
+
 			const res = await this.$http('/order/getMoney', this.query);
 			if (res.code >= 0) {
 				uni.hideToast();
-				uni.showToast({title:'操作成功'})
+				uni.showToast({ title: '操作成功', icon: 'none' })
 				this.query.account = '';
 				this.query.real_name = '';
 				this.query.money = '';
@@ -62,7 +62,7 @@ export default {
 			} else {
 				toast.clear();
 				this.$toast(res.msg)
-				uni.showToast({title:'res.msg'})
+				uni.showToast({ title: 'res.msg', icon: 'none' })
 			}
 			this.disabled = false;
 		},
@@ -79,26 +79,26 @@ export default {
 	// 包含 Vue 实例可用过滤器的哈希表。
 	filters: {},
 	// 在实例创建完成后被立即调用
-	created() {},
+	created() { },
 	// 在挂载开始之前被调用：相关的 render 函数首次被调用。
-	beforeMount() {},
+	beforeMount() { },
 	// el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
 	mounted() {
 		this.init();
-		this.$nextTick(() => {});
+		this.$nextTick(() => { });
 	},
 	// 数据更新时调用，发生在虚拟 DOM 打补丁之前。
-	beforeUpdate() {},
+	beforeUpdate() { },
 	// keep-alive 组件激活时调用。
-	activated() {},
+	activated() { },
 	// keep-alive 组件停用时调用。
-	deactivated() {},
+	deactivated() { },
 	// 实例销毁之前调用。在这一步，实例仍然完全可用。
-	beforeDestroy() {},
+	beforeDestroy() { },
 	//Vue 实例销毁后调用。
-	destroyed() {},
+	destroyed() { },
 	// 当捕获一个来自子孙组件的错误时被调用。
-	errorCaptured() {},
+	errorCaptured() { },
 	// 包含 Vue 实例可用指令的哈希表。
 	directives: {},
 	// 一个对象，键是需要观察的表达式，值是对应回调函数。

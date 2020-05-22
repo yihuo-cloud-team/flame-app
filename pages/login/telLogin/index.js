@@ -66,6 +66,7 @@ export default {
 				}, 1000);
 				uni.showToast({
 					title: '发送成功',
+					icon: 'none'
 				});
 			} else {
 				uni.showModal({

@@ -21,6 +21,7 @@ export default {
 				address: "", //详细地址
 				img: ""
 			},
+			area: [],
 			areaList: [],
 			arealabel: '',
 			classList: [],
@@ -146,7 +147,7 @@ export default {
 				})
 				return false;
 			};
-			const res = await this.$http.post('/task/save', this.form);
+			const res = await this.$http('/task/save', this.form);
 			if (res.code >= 0) {
 				uni.showToast({
 					title: '操作成功',
@@ -161,6 +162,7 @@ export default {
 			}
 
 		},
+
 		onConfirm(e) {
 			this.areaList = e.labelArr;
 			this.arealabel = e.label
@@ -174,7 +176,7 @@ export default {
 			} else {
 				var index = this.$refs.simpleAddress.queryIndex(['上海市', '市辖区', '松江区'], 'label');
 			}
-			this.areaList = index.index;
+			this.area = index.index;
 			this.$refs.simpleAddress.open();
 		}
 	},

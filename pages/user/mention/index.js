@@ -28,6 +28,7 @@ export default {
             if (res.code >= 0) {
                 uni.showToast({
                     title: '提交成功',
+                    icon: 'none',
                 })
                 setTimeout(() => {
                     uni.navigateBack({

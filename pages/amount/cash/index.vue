@@ -35,11 +35,11 @@
 	        </van-radio>
       </van-radio-group>-->
       <text class="btn-box" v-for="(item, i) in list" :key="i">
-        <button
+        <view
           class="cu-btn round"
-          :class="[checked == i ? 'bg-blue' : 'btn-item']"
+          :class="[checked == i ? 'activ' : 'btn-item']"
           @click="checked = i"
-        >{{ item }}</button>
+        >{{ item }}</view>
       </text>
 
       <view class="title">

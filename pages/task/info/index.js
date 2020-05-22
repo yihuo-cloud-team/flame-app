@@ -118,6 +118,7 @@ export default {
 						if (res.code >= 0) {
 							uni.showToast({
 								title: '操作成功',
+								icon: 'none'
 							});
 							this.page = 1;
 							this.list = [];
@@ -126,6 +127,7 @@ export default {
 						} else {
 							uni.showToast({
 								title: res.msg,
+								icon: 'none'
 							});
 						}
 					}
@@ -146,11 +148,13 @@ export default {
 						if (res.code >= 0) {
 							uni.showToast({
 								title: '操作成功',
+								icon: 'none'
 							});
 							this.update();
 						} else {
 							uni.showToast({
 								title: res.msg,
+								icon: 'none'
 							});
 						}
 					}
@@ -171,11 +175,13 @@ export default {
 						if (res.code >= 0) {
 							uni.showToast({
 								title: '操作成功',
+								icon: 'none'
 							});
 							this.update();
 						} else {
 							uni.showToast({
 								title: res.msg,
+								icon: 'none'
 							});
 						}
 					}

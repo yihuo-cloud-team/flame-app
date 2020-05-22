@@ -45,7 +45,7 @@ export default {
                     uni.navigateBack({
                         delta: 1
                     })
-                }, 500);
+                }, 800);
             }
         },
         async uploader() {

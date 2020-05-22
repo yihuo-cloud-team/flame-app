@@ -88,7 +88,7 @@
         <div :class="['input',{'activ':form.p}]" @click="openCity">{{form.p?arealabel:'省市区选择'}}</div>
         <simple-address
           ref="simpleAddress"
-          :pickerValueDefault="areaList"
+          :pickerValueDefault="area"
           @onConfirm="onConfirm"
           themeColor="#4289db"
         ></simple-address>

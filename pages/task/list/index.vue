@@ -38,7 +38,7 @@
           </view>
         </view>
       </view>
-      <view class="btn" v-if="finished">首页搜索更多内容</view>
+      <view class="btn" v-if="finished" @click="gohome">首页搜索更多内容</view>
     </view>
     <div class="empty" v-if="list.length < 1 && finished">
       <div class="empty-img">

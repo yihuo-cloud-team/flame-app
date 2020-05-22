@@ -34,6 +34,11 @@ export default {
       uni.navigateTo({
         url: url
       });
+    },
+    gohome() {
+      uni.switchTab({
+        url: '/pages/home/index'
+      });
     }
   },
   onReachBottom() {
