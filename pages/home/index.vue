@@ -37,6 +37,7 @@
     <view class="title">任务列表</view>
 
     <view class="card-list">
+      <task-card></task-card>
       <view
         class="card"
         v-for="(item,index) in list"
@@ -65,6 +66,7 @@
 
 <script>
 import OlIconNav from "@/components/OlIconNav/OlIconNav.vue";
+import TaskCard from "@/components/TaskCard/TaskCard.vue";
 import Upload from "../../plugins/Upload";
 export default {
   data() {
@@ -131,7 +133,7 @@ export default {
       this.go(`/pages/task/add/index?type=${data.id}`);
     }
   },
-  components: { OlIconNav },
+  components: { OlIconNav, TaskCard },
   onReachBottom() {
     this.updata();
   },
