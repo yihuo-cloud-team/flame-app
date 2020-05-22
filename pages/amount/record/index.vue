@@ -1,6 +1,6 @@
 <template>
   <view id="record">
-    <view class="date">
+    <!-- <view class="date">
       <view class="left" @click="showPopup">
         <view class="footer-left">开始时间</view>
         <view
@@ -8,7 +8,7 @@
           style="background-color:#AAC4FD"
         >{{currentDate.Format('yyyy-MM')}}</view>
       </view>
-      <!-- <van-popup v-model="show" position="bottom" :style="{height:'200px'}">
+      <van-popup v-model="show" position="bottom" :style="{height:'200px'}">
         <van-datetime-picker
           v-model="currentDate"
           type="year-month"
@@ -16,17 +16,34 @@
           @confirm="start"
           @cancel="show=false"
         />
-      </van-popup>-->
+      </van-popup>
       <view class="left">
         <view>全部</view>
-        <!-- <van-dropdown-menu>
+        <van-dropdown-menu>
           <van-dropdown-item
             v-model="form.type"
             :disabled="shows"
             @change="select"
             :options="option1"
           />
-        </van-dropdown-menu>-->
+        </van-dropdown-menu>
+      </view>
+    </view>-->
+    <view class="date">
+      <view class="times">
+        <view class="title">查询时间</view>
+        <view class="start">
+          <picker mode="date" @change="start" :value="form.times[0]">{{form.times[0]}}</picker>
+        </view>-
+        <view class="end">
+          <picker mode="date" @change="end" :value="form.times[1]">{{form.times[1]}}</picker>
+        </view>
+      </view>
+      <view class="record-class">
+        <picker mode="selector" :range="typeClass" range-key="name" @change="typeChoice" :value="typeIndex">
+          {{typeClass[typeIndex].name}}
+          <uni-icons type="arrowdown" style="margin-left: 5px;" size="14"></uni-icons>
+        </picker>
       </view>
     </view>
     <view class="panel-list" v-if="list.length > 0">

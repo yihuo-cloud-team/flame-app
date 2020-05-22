@@ -12,27 +12,6 @@ export default {
 			page: 0,
 			page_size: 10,
 			img: "https://api.yihuo-cloud.com/public/files/20200326/202003260703295347.jfif",
-
-			stateList: [{
-				title: '招募中',
-				task_state: 0
-			}, {
-				title: '进行中',
-				task_state: 2
-			}, {
-				title: '中止',
-				task_state: 3
-			}, {
-				title: '完成',
-				task_state: 4
-			}, {
-				title: '待验收',
-				task_state: 5
-			}, {
-				title: '失败',
-				task_state: 6
-			}],
-
 			task_id: 0
 		}
 	},
@@ -74,75 +53,51 @@ export default {
 			this.loading = false;
 			this.page++;
 		},
-
-		// //开发者确认完成
-		confirm1(e) {
-			uni.showModal({
-				title: '提示',
-				content: '确认完成',
-				success: async (res) => {
-					if (res.confirm) {
-						const res = await this.$http('/task/updateState', {
-							id: e.id,
-							task_state: 5
-						});
-						if (res.code >= 0) {
-							uni.showToast({
-								title: '操作成功',
-							});
-							this.update();
-						} else {
-							uni.showToast({
-								title: res.msg,
-							});
-						}
-					}
-				}
-			});
-		},
-		// //发布者确认
-		confirm2(e) {
+		//发布者确认
+		complete(e) {
 			uni.showModal({
 				title: '提示',
 				content: '确认完成',
 				success: async (res) => {
 					if (res.confirm) {
 						const res = await this.$http('/task/bossSuccess', {
-							task_id: e.id,
+							task_id: this.info.id,
 						});
 						if (res.code >= 0) {
 							uni.showToast({
 								title: '操作成功',
+								icon: 'none'
 							});
 							this.update();
 						} else {
 							uni.showToast({
 								title: res.msg,
+								icon: 'none'
 							});
 						}
 					}
 				}
 			});
 		},
-		//发布者中止任务
-		quxiao(e) {
+		payment() {
 			uni.showModal({
 				title: '提示',
-				content: '确认中止',
+				content: '确认打款',
 				success: async (res) => {
 					if (res.confirm) {
-						const res = await this.$http('/task/updateState', {
-							id: e.id,
-							task_state: 3,
+						const res = await this.$http('/task/pay', {
+							task_id: this.info.id,
 						});
-						if (res.code >= 0) {
+						if (res.code > 0) {
 							uni.showToast({
 								title: '操作成功',
+								icon: 'none'
 							});
 							this.update();
 						} else {
 							uni.showToast({
 								title: res.msg,
+								icon: 'none'
 							});
 						}
 					}
@@ -241,6 +196,13 @@ export default {
 	computed: {},
 	// 包含 Vue 实例可用过滤器的哈希表。
 	filters: {
+		dangerText(value) {
+			if (value == 5) {
+				return '申诉中'
+			} else {
+				return '立即申诉'
+			}
+		},
 		sex(value) {
 			if (value == null) return '--'
 			return value == 1 ? '男' : '女'

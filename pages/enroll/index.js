@@ -27,7 +27,7 @@ export default {
       }
     },
     async submit() {
-      if (this.form.message == '') {
+      if (this.form.text == '') {
         uni.showToast({
           title: '请简述原因',
           icon: 'none'

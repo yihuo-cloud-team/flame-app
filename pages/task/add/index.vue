@@ -85,7 +85,13 @@
         <div class="title">所在地</div>
       </div>
       <div class="body">
-        <div class="input" v-if="form.p==''">省市区选择</div>
+        <div :class="['input',{'activ':form.p}]" @click="openCity">{{form.p?arealabel:'省市区选择'}}</div>
+        <simple-address
+          ref="simpleAddress"
+          :pickerValueDefault="areaList"
+          @onConfirm="onConfirm"
+          themeColor="#4289db"
+        ></simple-address>
       </div>
     </div>
     <div class="card">

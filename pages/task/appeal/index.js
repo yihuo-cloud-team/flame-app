@@ -1,9 +1,15 @@
 export default {
-    name: 'mention',
+    name: 'enroll',
     layout: 'sub',
     data() {
         return {
-            message: ''
+            form: {
+                stop_remark: '',
+                task_state: 5,
+                task_id: '',
+            },
+            userinfo: null,
+            phone: ''
         };
     },
     methods: {
@@ -13,31 +19,55 @@ export default {
         },
         // 用于更新一些数据
         async update() {
-            // const res = await this.$http.post('', {});
+            let res = await this.$http('/user/save_info', {});
+            if (res.code > 0) {
+                this.userinfo = res.data
+                this.phone = res.data.phone;
+            }
         },
         async submit() {
-
-            if (this.message.replace(/(^\s*)|(\s*$)/g, "") == '') {
+            if (this.form.text == '') {
                 uni.showToast({
-                    title: '输入内容不得为空',
+                    title: '请简述您的申诉理由',
                     icon: 'none'
                 })
-                return false;
+                return false
             }
-            const res = await this.$http('/suggest/save', { text: this.message });
-            if (res.code >= 0) {
+            if (this.phone == '') {
                 uni.showToast({
-                    title: '提交成功',
+                    title: '请输入联系方式',
+                    icon: 'none'
+                })
+                return false
+            }
+            const res = await this.$http('/task/updateState', this.form);
+            this.userinfo.phone = this.phone
+            const res1 = await this.$http('/user/save', this.userinfo);
+            if (res.code > 0) {
+                uni.showToast({
+                    title: '操作成功',
+                    icon: 'none'
                 })
                 setTimeout(() => {
                     uni.navigateBack({
                         delta: 1
                     })
                 }, 500);
-
             } else {
-                this.$toast(res.msg);
+                uni.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                })
             }
+
+        },
+        Switch() {
+            this.form.display = this.form.display == 1 ? 0 : 1
+        }
+    },
+    onLoad(res) {
+        if (res.id) {
+            this.form.task_id = res.id
         }
     },
     // 计算属性

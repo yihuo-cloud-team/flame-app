@@ -5,7 +5,7 @@ let Url = {
   serverUrl: 'https://api.flame.yihuo-cloud.com/h5',//生产环境
   // serverUrl: 'http://192.168.0.143:88/client',//李子龙 
   // serverUrl: 'http://192.168.0.100:12193/h5',//李传浩的本地
-  // serverUrl: 'http://192.168.0.122:82/admin',//吴杰
+  // serverUrl: 'http://192.168.0.114:84/h5',//吴杰
   // uploadUrl: '',
   uploadUrl: 'https://api.yihuo-cloud.com',
   // imageUrl: '',

@@ -26,9 +26,15 @@
 			}
 		},
 		{
+			"path": "pages/task/appeal/index",
+			"style": {
+				"navigationBarTitleText": "申请申诉"
+			}
+		},
+		{
 			"path": "pages/enroll/index",
 			"style": {
-				"navigationBarTitleText": "任务详情"
+				"navigationBarTitleText": "抢单"
 			}
 		},
 		{
@@ -101,6 +107,12 @@
 			"path": "pages/amount/cash/index",
 			"style": {
 				"navigationBarTitleText": "我的提现"
+			}
+		},
+		{
+			"path": "pages/amount/deposit/index",
+			"style": {
+				"navigationBarTitleText": "托管金额"
 			}
 		},
 		{

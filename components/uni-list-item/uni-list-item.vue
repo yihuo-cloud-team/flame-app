@@ -3,7 +3,7 @@
   <cell>
     <!-- #endif -->
     <view :class="disabled ? 'uni-list-item--disabled' : ''" class="uni-list-item" @click="onClick">
-			<!-- 点击带hover效果 -->
+      <!-- 点击带hover效果 -->
       <!-- <view :class="disabled ? 'uni-list-item--disabled' : ''" :hover-class="disabled || showSwitch ? '' : 'uni-list-item--hover'"
       class="uni-list-item" @click="onClick">-->
       <view class="uni-list-item__container" :class="{'uni-list-item--first':isFirstChild}">
@@ -204,9 +204,9 @@ $list-item-pd: $uni-spacing-col-lg $uni-spacing-row-lg;
   justify-content: space-between;
   align-items: center;
   /* #ifdef APP-PLUS */
-  border-top-color: $uni-border-color;
-  border-top-style: solid;
-  border-top-width: 0.5px;
+  // border-top-color: $uni-border-color;
+  // border-top-style: solid;
+  // border-top-width: 0.5px;
   /* #endif */
 }
 

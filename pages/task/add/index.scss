@@ -63,6 +63,10 @@
     overflow: hidden;
     padding: 10px;
     background-color: #ffffff;
+
+    &.activ {
+      color: #333;
+    }
   }
 
   .title {

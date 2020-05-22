@@ -84,7 +84,6 @@
 
       .panel {
         background-color: #fff;
-
         padding: 10px 0;
         border: 1px solid rgba(255, 255, 255, 0);
 
@@ -127,6 +126,10 @@
           }
         }
       }
+    }
+
+    .item:nth-last-child(1) .panel {
+      border: none;
     }
 
     &.erect {

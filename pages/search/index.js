@@ -1,3 +1,4 @@
+import simpleAddress from '@/components/simple-address/simple-address.vue';
 export default {
   name: 'search',
   layout: 'sub',
@@ -6,6 +7,7 @@ export default {
       list: [],
       finished: false,
       district: '暂无定位',
+      citycode: [],
       query: {
         search: '',
         page: 1,
@@ -88,17 +90,25 @@ export default {
         success: (res) => {
           if (res.address) {
             this.district = res.address.city
+            if (['北京市', '天津市', '上海市', '重庆市'].includes(res.address.city)) {
+              res.address.city = '市辖区'
+            }
+            this.citycode = [res.address.province, res.address.city, res.address.district]
           }
         }
       })
     },
-
-    confirm(e) {
-      this.AreaArr = e;
-      this.district = e[2].name;
-      this.query.a = e[2].code;
-      this.search();
-      this.show = false;
+    choiceCity(e) {
+      this.district = e.labelArr[1]
+      this.citycode = e.labelArr
+      this.query.a = e.areaCode
+      this.resetupdata()
+    },
+    openCity() {
+      // var index = this.$refs.simpleAddress.queryIndex([13, 1302, 130203], 'value');
+      var index = this.$refs.simpleAddress.queryIndex(this.citycode, 'label');
+      this.citycode = index.index;
+      this.$refs.simpleAddress.open();
     },
     go(url) {
       uni.navigateTo({
@@ -154,5 +164,5 @@ export default {
   // 一个对象，键是需要观察的表达式，值是对应回调函数。
   watch: {},
   // 组件列表
-  components: {},
+  components: { simpleAddress },
 };

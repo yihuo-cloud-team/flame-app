@@ -1,10 +1,17 @@
 <template>
   <div id="search">
     <div class="search-box">
-      <div class="icon" @click="show=true">
-        <!-- <van-icon name="location" size="20" /> -->
+      <div class="icon" @click="openCity">
         {{district}}
+        <!-- <van-icon name="location" size="20" /> -->
       </div>
+      <simple-address
+        type="bottom"
+        ref="simpleAddress"
+        :pickerValueDefault="citycode"
+        @onConfirm="choiceCity"
+        themeColor="#4289db"
+      ></simple-address>
       <view class="input-box">
         <input
           type="text"

@@ -1,9 +1,9 @@
 export default {
-    name: 'mention',
-    layout: 'sub',
+    name: 'deposit',
     data() {
         return {
-            message: ''
+            paymode: 'WX',
+            price: ''
         };
     },
     methods: {
@@ -15,30 +15,12 @@ export default {
         async update() {
             // const res = await this.$http.post('', {});
         },
-        async submit() {
-
-            if (this.message.replace(/(^\s*)|(\s*$)/g, "") == '') {
-                uni.showToast({
-                    title: '输入内容不得为空',
-                    icon: 'none'
-                })
-                return false;
-            }
-            const res = await this.$http('/suggest/save', { text: this.message });
-            if (res.code >= 0) {
-                uni.showToast({
-                    title: '提交成功',
-                })
-                setTimeout(() => {
-                    uni.navigateBack({
-                        delta: 1
-                    })
-                }, 500);
-
-            } else {
-                this.$toast(res.msg);
-            }
+        RadioChange(e) {
+            this.paymode = e.detail.value
         }
+    },
+    onLoad(res) {
+        this.price = res.price
     },
     // 计算属性
     computed: {},

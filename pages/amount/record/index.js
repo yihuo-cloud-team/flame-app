@@ -7,29 +7,25 @@ export default {
         type: "",
         page: 1,
         page_size: 15,
-        times: [new Date(new Date().getFullYear(), new Date().getMonth(), 1).Format('yyyy-MM-dd'), new Date().Format('yyyy-MM-dd')],
+        times: [new Date().Format('yyyy-MM-dd'), new Date().Format('yyyy-MM-dd')],
       },
       list: [
       ],
-      xi: false,
-      loading: false,
       finished: false,
-      shows: false,
-      show: false,
-      option1: [{
-        text: '全部',
-        value: ""
+      typeClass: [{
+        name: '全部',
+        id: ""
       },
       {
-        text: '收入',
-        value: 1
+        name: '收入',
+        id: 1
       },
       {
-        text: '支出',
-        value: 2
+        name: '支出',
+        id: 2
       }
       ],
-      currentDate: new Date()
+      typeIndex: 0
     };
   },
   onLoad: function (option) {
@@ -63,36 +59,19 @@ export default {
 
       }
     },
-    showPopup() {
-      this.show = true;
-    },
-    formatter(type, value) {
-      if (type === 'year') {
-        return `${value}年`;
-      } else if (type === 'month') {
-        return `${value}月`;
-      }
-      return value;
+    typeChoice(e) {
+      this.typeIndex = e.detail.value
+      this.form.type = this.typeClass[e.detail.value].id
+      this.resetupdata()
 
-    },
-    select(e) {
-
-      console.log(e)
-      this.form.type = e;
-      this.list = [];
-      this.form.page = 1;
-      this.update();
-      this.finished = false;
     },
     start(e) {
-      this.list = [];
-      this.form.page = 1;
-      this.form.times[0] = e.Format('yyyy-MM-dd');
-      this.currentDate = e;
-      this.show = false;
-      var monthEndDate = new Date(e.getFullYear(), e.getMonth() + 1, 0).Format('yyyy-MM-dd');
-      this.form.times[1] = monthEndDate;
-      this.update();
+      this.$set(this.form.times, 0, e.detail.value)
+      this.resetupdata()
+    },
+    end(e) {
+      this.$set(this.form.times, 1, e.detail.value)
+      this.resetupdata()
     },
     onReachBottom() {
       this.updata();

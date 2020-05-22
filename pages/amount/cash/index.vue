@@ -37,7 +37,7 @@
       <text class="btn-box" v-for="(item, i) in list" :key="i">
         <button
           class="cu-btn round"
-          :class="[checked == i ? 'bg-blue' : 'line-blue']"
+          :class="[checked == i ? 'bg-blue' : 'btn-item']"
           @click="checked = i"
         >{{ item }}</button>
       </text>

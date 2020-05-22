@@ -22,9 +22,9 @@ export default {
 				img: ""
 			},
 			areaList: [],
+			arealabel: '',
 			classList: [],
 			priceList: [],
-			show: false
 		};
 	},
 	methods: {
@@ -56,12 +56,6 @@ export default {
 				}
 			})
 		},
-		select(e) {
-			this.form.p = e[0].code;
-			this.form.c = e[1].code;
-			this.form.a = e[2].code;
-			this.show = false;
-		},
 		price(num) {
 			this.form.price = num;
 		},
@@ -69,6 +63,119 @@ export default {
 			const file = await Upload.select();
 			const res = await Upload.send(file);
 			this.form.img = res.data.url;
+		},
+		async submit() {
+			if (this.form.task_name == '') {
+				uni.showToast({
+					title: '请填写任务名称',
+					icon: 'none'
+				})
+				return false;
+			};
+			if (this.form.img == '') {
+				uni.showToast({
+					title: '请上传图片',
+					icon: 'none'
+				})
+				return false;
+			};
+			if (this.form.task_type == '') {
+				uni.showToast({
+					title: '请选择任务类别',
+					icon: 'none'
+				})
+				return false;
+			};
+
+			if (this.form.price == '') {
+				uni.showToast({
+					title: '请填写任务价格',
+					icon: 'none'
+				})
+				return false;
+			} else {
+				if (this.form.price < this.min_price) {
+					uni.showToast({
+						title: `任务价格不得低于${this.min_price}元`,
+						icon: 'none'
+					})
+					return false;
+				}
+			};
+
+			if (this.form.cycle == '') {
+				uni.showToast({
+					title: '请填写任务天数',
+					icon: 'none'
+				})
+				return false;
+			};
+			if (typeof this.form.cycle == 'string') {
+				uni.showToast({
+					title: '任务天数请输入数字',
+					icon: 'none'
+				})
+				return false;
+			}
+			if (this.form.info == '') {
+				uni.showToast({
+					title: '请填写任务详情',
+					icon: 'none'
+				})
+				return false;
+			};
+			if (this.form.p == '') {
+				uni.showToast({
+					title: '请选择省市区',
+					icon: 'none'
+				})
+				return false;
+			};
+			if (this.form.address == '') {
+				uni.showToast({
+					title: '请填写详细地址',
+					icon: 'none'
+				})
+				return false;
+			};
+
+			if (this.form.contact == '') {
+				uni.showToast({
+					title: '请填写联系方式',
+					icon: 'none'
+				})
+				return false;
+			};
+			const res = await this.$http.post('/task/save', this.form);
+			if (res.code >= 0) {
+				uni.showToast({
+					title: '操作成功',
+					icon: 'none'
+				})
+				this.go(`/pages/amount/deposit/index?price=${this.form.price}&&task_order=${res.data.task_order}`)
+			} else {
+				uni.showToast({
+					title: res.msg,
+					icon: 'none'
+				})
+			}
+
+		},
+		onConfirm(e) {
+			this.areaList = e.labelArr;
+			this.arealabel = e.label
+			this.form.p = e.areaCode.slice(0, 2) + '0000'
+			this.form.c = e.areaCode.slice(0, 4) + '00'
+			this.form.a = e.areaCode
+		},
+		openCity() {
+			if (this.areaList.length > 0) {
+				var index = this.$refs.simpleAddress.queryIndex(this.areaList, 'label');
+			} else {
+				var index = this.$refs.simpleAddress.queryIndex(['上海市', '市辖区', '松江区'], 'label');
+			}
+			this.areaList = index.index;
+			this.$refs.simpleAddress.open();
 		}
 	},
 	// 计算属性

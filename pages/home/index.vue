@@ -228,6 +228,9 @@ export default {
   padding: 10px;
   background-origin: 5px;
   background-color: #ffffff;
+  .card:nth-last-child(1) {
+    border: none;
+  }
   .card {
     display: flex;
     // align-items: center;
