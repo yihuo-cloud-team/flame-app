@@ -5,14 +5,17 @@ export default {
 		return {
 			state: false,
 			list: [],
-			loading: false,
 			finished: false,
 			info: {},
+			userInfo: {},
 			list: [],
-			page: 0,
-			page_size: 10,
+			query: {
+				page: 1,
+				page_size: 10,
+				task_id: ''
+			},
 			img: "https://api.yihuo-cloud.com/public/files/20200326/202003260703295347.jfif",
-			task_id: 0
+
 		}
 	},
 	onShow() {
@@ -21,37 +24,37 @@ export default {
 	methods: {
 		// 用于初始化一些数据
 		init() {
+			this.http_userinfo()
 			this.apply();
 		},
 		// 用于更新一些数据
 		async update() {
-
 			const res = await this.$http('/task/info/ai', {
-				// task_id: this.$route.query.task_id
-				task_id: this.task_id,
+				task_id: this.query.task_id,
 			});
-			if (res.code >= 0) {
+			if (res.code > 0) {
 				this.info = res.data;
 			}
 		},
-
-		async apply() {
-			if (this.finished) return;
-			this.loading = true;
-			const res = await this.$http('/task/applyList', {
-				task_id: this.task_id,
-				page: this.page,
-				page_size: this.page_size
-			});
+		async http_userinfo() {
+			const res = await this.$http('/user/save_info', {});
 			if (res.code > 0) {
-				this.loading = false;
-				this.list = [...this.list, ...res.data];
+				this.userInfo = res.data;
 			}
-			if (this.list.length >= res.total) {
+		},
+		async apply() {
+			console.warn(1);
+
+			const res = await this.$http('/task/applyList', this.query);
+			if (res.code > 0) {
+				this.list = [...this.list, ...res.data];
+				if (this.query.page_size > res.total) {
+					this.finished = true;
+				}
+			} else {
 				this.finished = true;
 			}
-			this.loading = false;
-			this.page++;
+
 		},
 		//发布者确认
 		complete(e) {
@@ -113,14 +116,14 @@ export default {
 					if (res.confirm) {
 						const res = await this.$http('/task/chose', {
 							join_user: item,
-							task_id: this.task_id
+							task_id: this.info.id
 						});
 						if (res.code >= 0) {
 							uni.showToast({
 								title: '操作成功',
 								icon: 'none'
 							});
-							this.page = 1;
+							this.query.page = 1;
 							this.list = [];
 							this.update();
 							this.apply();
@@ -192,8 +195,8 @@ export default {
 			uni.navigateTo({ url });
 		}
 	},
-	onLoad: function (option) {
-		this.task_id = option.task_id;
+	onLoad(option) {
+		this.query.task_id = option.task_id;
 	},
 	onNavigationBarButtonTap(option) {
 		this.go('/pages/user/help/index');
@@ -220,9 +223,9 @@ export default {
 	beforeMount() { },
 	// el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
 	mounted() {
-
+		this.init();
 		this.$nextTick(() => {
-			this.init();
+
 		});
 	},
 	// 数据更新时调用，发生在虚拟 DOM 打补丁之前。

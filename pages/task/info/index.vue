@@ -22,17 +22,20 @@
                 </view>
               </template>
             </template>-->
-            <view class="padding-xs" v-if="info.task_state == 1">
-              <view class="cu-tag line-green">待支付</view>
-            </view>
             <view class="padding-xs" v-if="info.task_state == 2">
-              <view class="cu-tag line-green">招募中</view>
+              <view class="cu-tag line-green" v-if="info.is_join == 1">已申请</view>
+              <view class="cu-tag line-green" v-else>招募中</view>
             </view>
             <view class="padding-xs" v-if="info.task_state == 3">
-              <view class="cu-tag line-green">进行中</view>
+              <view class="cu-tag line-green" v-if="info.is_join == 2">未被选中</view>
+              <view class="cu-tag line-green" v-else>进行中</view>
             </view>
             <view class="padding-xs" v-if="info.task_state == 4">
-              <view class="cu-tag line-green">完成</view>
+              <view
+                class="cu-tag line-green"
+                v-if="userInfo.id == info.join_user || userInfo.id == info.user_id "
+              >已打款</view>
+              <view class="cu-tag line-green" v-else>完成</view>
             </view>
             <view class="padding-xs" v-if="info.task_state == 5">
               <view class="cu-tag line-green">申诉中</view>
@@ -125,14 +128,12 @@
             </view>
             <view class="btn-box">
               <template v-if="info.is_up == 1">
-                <template>
-                  <template v-if="info.task_state == 0">
-                    <view class="btn" v-if="info.join_user == 0" @tap="select(item.user_id)">选他</view>
-                  </template>
+                <template v-if="info.task_state == 2">
+                  <view class="btn" v-if="!info.join_user" @tap="select(item.user_id)">选他</view>
                 </template>
               </template>
-              <template v-if="info.join_user != 0">
-                <view v-if="index == 0">开发者</view>
+              <template v-if="item.is_chose">
+                <view>开发者</view>
               </template>
             </view>
           </view>
@@ -146,15 +147,18 @@
         <text class="text-grey">暂无申请人...</text>
       </view>
     </view>
-
     <view class="footer">
       <template v-if="info.is_owner == 1">
         <view v-if="info.task_state == 1" class="btn">立即支付</view>
         <view v-if="info.task_state == 3" class="btn" @click="complete">项目完成</view>
         <view v-if="info.task_state == 4 && info.is_pay == 0" class="btn" @click="payment">立即打款</view>
         <view
-          v-if="info.task_state != 1"
+          v-if="info.task_state != 1 && info.task_state != 5"
           @click="go(`/pages/task/appeal/index?id=${info.id}`)"
+          :class="['btn','danger', {'danger-disabled' : info.task_state == 5}]"
+        >{{info.task_state | dangerText}}</view>
+        <view
+          v-else
           :class="['btn','danger', {'danger-disabled' : info.task_state == 5}]"
         >{{info.task_state | dangerText}}</view>
       </template>

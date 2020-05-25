@@ -45,7 +45,7 @@ export default {
             const res1 = await this.$http('/user/save', this.userinfo);
             if (res.code > 0) {
                 uni.showToast({
-                    title: '操作成功',
+                    title: '申诉成功',
                     icon: 'none'
                 })
                 setTimeout(() => {
@@ -61,9 +61,9 @@ export default {
             }
 
         },
-        Switch() {
-            this.form.display = this.form.display == 1 ? 0 : 1
-        }
+        // Switch() {
+        //     this.form.display = this.form.display == 1 ? 0 : 1
+        // }
     },
     onLoad(res) {
         if (res.id) {

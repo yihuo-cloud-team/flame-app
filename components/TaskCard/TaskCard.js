@@ -1,6 +1,19 @@
 export default {
   name: 'TaskCard',
-  props: {},
+  props: {
+    item: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
+    OperateMode: {
+      type: Boolean,
+      default: () => {
+        return false
+      }
+    }
+  },
   data() {
     return {
     };
@@ -11,6 +24,12 @@ export default {
     },
     // 用于更新一些数据
     update() { },
+    go() {
+      this.$emit('click');
+    },
+    operate() {
+      this.$emit('operate', this.item);
+    }
   },
   // 计算属性
   computed: {},

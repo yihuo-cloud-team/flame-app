@@ -8,7 +8,9 @@ export default {
         page: 1,
         page_size: 10
       },
-      finished: false
+      finished: false,
+      show: false,
+      OperateItem: {}
     };
   },
   methods: {
@@ -44,6 +46,39 @@ export default {
       this.query.page = 1;
       this.updata();
     },
+    onOperate(e) {
+      this.OperateItem = e
+      this.show = true
+    },
+    async push() {
+      this.show = false
+      uni.showModal({
+        title: '提示',
+        content: `是否${this.OperateItem.is_up ? "下" : '上'}架`,
+        success: async (res) => {
+          if (res.confirm) {
+            const res = await this.$http('/task/updateState', {
+              is_up: this.OperateItem.is_up ? 0 : 1,
+              id: this.OperateItem.id
+            });
+            if (res.code >= 0) {
+              uni.showToast({
+                title: '操作成功',
+                icon: 'none'
+              });
+              this.list = [];
+              this.query.page = 1;
+              this.updata();
+            } else {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              });
+            }
+          }
+        }
+      });
+    }
 
   },
   // 计算属性
