@@ -9,8 +9,9 @@
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
         "modules" : {
-            "OAuth" : {},
-            "Maps" : {}
+            "Maps" : {},
+            "Payment" : {},
+            "OAuth" : {}
         },
         "distribute" : {
             "android" : {
@@ -28,6 +29,7 @@
                     "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
                     "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
                     "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
@@ -44,12 +46,24 @@
                 "idfa" : false
             },
             "sdkConfigs" : {
-                "oauth" : {},
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wx5abc94a0202d6408",
+                        "appsecret" : "61a062da03655ccd16dfacb8d9712c5c",
+                        "UniversalLinks" : "https://official.flame.yihuo-cloud.com/ulink"
+                    }
+                },
                 "ad" : {},
                 "maps" : {
                     "amap" : {
                         "appkey_ios" : "9209fc5b5e244dc22cfe8c007c1262ff",
                         "appkey_android" : "5b145cc49187d784042e5887d2e19ee7"
+                    }
+                },
+                "payment" : {
+                    "weixin" : {
+                        "appid" : "wx5abc94a0202d6408",
+                        "UniversalLinks" : "https://official.flame.yihuo-cloud.com/ulink"
                     }
                 }
             }
