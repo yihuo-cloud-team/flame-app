@@ -59,7 +59,7 @@ export default {
           if (res.confirm) {
             const res = await this.$http('/task/updateState', {
               is_up: this.OperateItem.is_up ? 0 : 1,
-              id: this.OperateItem.id
+              task_id: this.OperateItem.id
             });
             if (res.code >= 0) {
               uni.showToast({
