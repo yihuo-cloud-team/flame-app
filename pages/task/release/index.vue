@@ -1,41 +1,26 @@
 <template>
   <view id="release">
     <view class="trends-box" v-if="list.length > 0">
-      <view class="trends-list erect">
-        <view
-          class="item"
-          @click="go(`/pages/task/info/index?task_id=${item.id}`)"
+      <view class="trends-list">
+        <task-card
           v-for="(item,index) in list"
           :key="index"
-          :title="item"
-        >
-          <view class="panel">
-            <view class="box-img">
-              <view class="img" :style="`background-image: url(${$getUrl(item.img)});`"></view>
-            </view>
-            <view class="panel-body">
-              <view class="title-box">
-                <view class="title">{{item.task_name}}</view>
-                <view class="state">
-                  <view class="cu-tag line-orange tag" v-if="item.task_state==1">待支付</view>
-                  <view class="cu-tag line-orange tag" v-if="item.task_state==2">招募中</view>
-                  <view class="cu-tag line-orange tag" v-if="item.task_state==3">进行中</view>
-                  <view class="cu-tag line-orange tag" v-if="item.task_state==4">完成</view>
-                  <view class="cu-tag line-orange tag" v-if="item.task_state==5">申诉中</view>
-                </view>
-              </view>
-              <view class="text">
-                <view class="money">￥{{item.price}}</view>
-              </view>
-              <view class="subtitle">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</view>
-              <template v-if="item.state==2">
-                <view style="color:red;font-size:12px">驳回原因：{{item.remarks}}</view>
-              </template>
-            </view>
+          :item="item"
+          @click="go(`/pages/task/info/index?task_id=${item.id}`)"
+          operate-mode
+          @operate="onOperate"
+        ></task-card>
+      </view>
+      <view class="btn-text" v-if="finished">没有更多了</view>
+      <view :class="['cu-modal','bottom-modal',{'show' : show }]">
+        <view class="cu-dialog">
+          <view class="btn-list">
+            <view class="btn" @click="push">{{OperateItem.is_up?'下架':'上架'}}</view>
+            <!-- <view class="btn">删除</view> -->
+            <view class="btn" @click="show=false">取消</view>
           </view>
         </view>
       </view>
-      <view class="btn-text" v-if="finished">没有更多了</view>
     </view>
     <div class="empty" v-if="list.length < 1 && finished">
       <div class="empty-img">

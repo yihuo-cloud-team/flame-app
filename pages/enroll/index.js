@@ -47,7 +47,7 @@ export default {
       const res1 = await this.$http('/user/save', this.userinfo);
       if (res.code > 0) {
         uni.showToast({
-          title: '操作成功',
+          title: '抢单成功',
           icon: 'none'
         })
         setTimeout(() => {

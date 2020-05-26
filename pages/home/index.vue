@@ -37,25 +37,12 @@
     <view class="title">任务列表</view>
 
     <view class="card-list">
-      <task-card></task-card>
-      <view
-        class="card"
+      <task-card
         v-for="(item,index) in list"
-        @click="go(`/pages/task/info/index?task_id=${item.id}`)"
         :key="index"
-      >
-        <image mode="aspectFill" :src="$getUrl(item.img)" />
-        <view class="center">
-          <view class="task-title">{{item.task_name}}</view>
-          <view class="price">¥{{item.price}}</view>
-          <view class="time">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</view>
-        </view>
-        <view class="right">
-          <view class="cu-tag line-orange tag" v-if="item.task_state==0">招募中</view>
-          <view class="cu-tag line-orange tag" v-if="item.task_state==2">开发中</view>
-          <view class="cu-tag line-orange tag" v-if="item.task_state==4">完成</view>
-        </view>
-      </view>
+        :item="item"
+        @click="go(`/pages/task/info/index?task_id=${item.id}`)"
+      ></task-card>
     </view>
     <div class="btn-text" v-if="finished">没有更多了</div>
 
@@ -127,8 +114,6 @@ export default {
       });
     },
     routers(data) {
-      console.warn(data);
-
       // this.$router.push(`/task/add?type=${data.id}`);
       this.go(`/pages/task/add/index?type=${data.id}`);
     }
@@ -227,56 +212,8 @@ export default {
 }
 
 .card-list {
-  padding: 10px;
-  background-origin: 5px;
-  background-color: #ffffff;
-  .card:nth-last-child(1) {
+  .TaskCard:nth-last-child(1) {
     border: none;
-  }
-  .card {
-    display: flex;
-    // align-items: center;
-    overflow: hidden;
-    border-bottom: 1px solid #f1f1f1;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    image {
-      display: block;
-      max-width: 150px;
-      min-width: 150px;
-      max-height: 100px;
-      min-height: 100px;
-      background-color: #dddddd;
-      border-radius: 5px;
-    }
-    .center {
-      margin-left: 10px;
-      overflow: hidden;
-      margin-right: 10px;
-      padding-top: 10px;
-      .task-title {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        font-size: 16px;
-        color: #333;
-        line-height: 1;
-        margin-bottom: 10px;
-      }
-      .price {
-        color: #f00;
-        margin-bottom: 5px;
-      }
-      .time {
-        font-size: 11px;
-        color: #666;
-      }
-    }
-    .right {
-      flex: 1;
-      padding-top: 8px;
-      text-align: right;
-    }
   }
 }
 .btn-text {

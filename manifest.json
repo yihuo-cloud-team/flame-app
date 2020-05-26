@@ -50,12 +50,10 @@
                     "weixin" : {
                         "appid" : "wx5abc94a0202d6408",
                         "appsecret" : "61a062da03655ccd16dfacb8d9712c5c",
-                        "UniversalLinks" : ""
+                        "UniversalLinks" : "https://official.flame.yihuo-cloud.com/ulink"
                     }
                 },
-                "ad" : {
-                    "csj" : {}
-                },
+                "ad" : {},
                 "maps" : {
                     "amap" : {
                         "appkey_ios" : "9209fc5b5e244dc22cfe8c007c1262ff",
@@ -65,7 +63,7 @@
                 "payment" : {
                     "weixin" : {
                         "appid" : "wx5abc94a0202d6408",
-                        "UniversalLinks" : ""
+                        "UniversalLinks" : "https://official.flame.yihuo-cloud.com/ulink"
                     }
                 }
             }

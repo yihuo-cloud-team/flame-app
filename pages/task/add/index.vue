@@ -71,7 +71,6 @@
       <div class="body">
         <div class="input">
           <textarea
-            style="padding: 10px;"
             v-model="form.info"
             maxlength="300"
             placeholder="请尽量详细描述您的项目，以吸引更多人报名"
