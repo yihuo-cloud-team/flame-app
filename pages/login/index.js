@@ -29,11 +29,13 @@ export default {
 						success: async function (infoRes) {
 							console.log(infoRes)
 							_this.userInfo = _this.$twoJsonMerge(loginRes.authResult, infoRes)
-							let openid = loginRes.authResult.openid;
-							let access_token = loginRes.authResult.access_token;
-							let unionid = loginRes.authResult.unionid;
-							console.log(openid, access_token, unionid)
-							const res = await _this.$http('/auth/login', { openid, access_token, unionid });
+							// let openid = loginRes.authResult.openid;
+							// let access_token = loginRes.authResult.access_token;
+							// let unionid = loginRes.authResult.unionid;
+							let userInfo=infoRes.userInfo;
+							console.log(userInfo)
+							const res = await _this.$http('/auth/app_wx_login',  userInfo );
+							
 							console.log(res)
 							if (res.code >= 1) {
 								uni.setStorageSync('jwt', res.jwt);
