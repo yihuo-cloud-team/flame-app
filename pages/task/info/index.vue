@@ -60,9 +60,9 @@
             :style="[{ color: state ? 'rgba(65, 135, 219, 1)' : '' }]"
           ></view>
         </view>
-        <view v-if="info.state == 2">
+        <!-- <view v-if="info.state == 2">
           <view style="color:red;font-size:14px;margin-top:10px">驳回原因：{{ info.remarks }}</view>
-        </view>
+        </view>-->
       </view>
     </view>
     <view id="IssuerInfo" class="body" style="margin-bottom:10px;">
@@ -159,15 +159,17 @@
         <view v-if="info.join_user">
           <view v-if="info.task_state == 4 && info.is_pay == 0" class="btn" @click="payment">立即打款</view>
         </view>
-        <view
-          v-if="info.task_state != 1 && info.task_state != 5"
-          @click="go(`/pages/task/appeal/index?id=${info.id}`)"
-          :class="['btn','danger', {'danger-disabled' : info.task_state == 5}]"
-        >{{info.task_state | dangerText}}</view>
-        <view
-          v-else
-          :class="['btn','danger', {'danger-disabled' : info.task_state == 5}]"
-        >{{info.task_state | dangerText}}</view>
+        <view v-if="info.task_state != 1">
+          <view
+            v-if="info.task_state != 5"
+            @click="go(`/pages/task/appeal/index?id=${info.id}`)"
+            :class="['btn','danger', {'danger-disabled' : info.task_state == 5}]"
+          >{{info.task_state | dangerText}}</view>
+          <view
+            v-else
+            :class="['btn','danger', {'danger-disabled' : info.task_state == 5}]"
+          >{{info.task_state | dangerText}}</view>
+        </view>
       </template>
       <template v-if="info.is_owner==0">
         <template v-if="info.task_state==2">
