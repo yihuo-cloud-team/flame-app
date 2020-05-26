@@ -1,3 +1,4 @@
+import TaskCard from "@/components/TaskCard/TaskCard.vue";
 export default {
   name: 'list',
   layout: 'sub',
@@ -76,5 +77,7 @@ export default {
   // 一个对象，键是需要观察的表达式，值是对应回调函数。
   watch: {},
   // 组件列表
-  components: {},
+  components: {
+    TaskCard
+  },
 };
