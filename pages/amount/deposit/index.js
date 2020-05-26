@@ -17,7 +17,19 @@ export default {
         },
         RadioChange(e) {
             this.paymode = e.detail.value
-        }
+        },
+		async submit(){
+			uni.requestPayment({
+			    provider: 'wxpay',
+			    orderInfo: 'orderInfo', //微信、支付宝订单数据
+			    success: function (res) {
+			        console.log('success:' + JSON.stringify(res));
+			    },
+			    fail: function (err) {
+			        console.log('fail:' + JSON.stringify(err));
+			    }
+			});
+		},
     },
     onLoad(res) {
         this.price = res.price
