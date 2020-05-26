@@ -14,6 +14,7 @@
       <div class="task-info">{{$handleTime(item.add_time)}} | {{item.join_num}}人报名</div>
     </div>
     <div class="footer">
+      <view class="cu-tag line-orange tag" v-if="item.task_state==1">待支付</view>
       <view class="cu-tag line-orange tag" v-if="item.task_state==2">招募中</view>
       <view class="cu-tag line-orange tag" v-if="item.task_state==3">进行中</view>
       <view class="cu-tag line-orange tag" v-if="item.task_state==4">完成</view>
