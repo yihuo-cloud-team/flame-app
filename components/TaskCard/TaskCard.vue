@@ -2,7 +2,7 @@
   <div class="TaskCard" @click="go">
     <div class="head">
       <div class="img-box">
-        <img class="img" :src="$getUrl(item.img)" alt />
+        <image mode="aspectFill" class="img" :src="$getUrl(item.img)" alt />
       </div>
     </div>
     <div class="body">
