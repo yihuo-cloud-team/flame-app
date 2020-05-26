@@ -31,11 +31,10 @@ export default {
 							console.log(infoRes)
 							_this.userInfo = _this.$twoJsonMerge(loginRes.authResult, infoRes)
 							let userInfo = infoRes.userInfo;
+							this.cid = plus.push.getClientInfo().clientid;//客户端标识
 							userInfo.cid = this.cid;
 							console.log(userInfo)
 							const res = await _this.$http('/auth/app_wx_login', userInfo);
-
-							console.log(res)
 							if (res.code >= 1) {
 								uni.setStorageSync('jwt', res.jwt);
 								uni.setStorageSync('userInfo', JSON.stringify(res.data));
@@ -84,8 +83,6 @@ export default {
 	mounted() {
 		this.init();
 		// 页面加载时触发  
-		this.cid = plus.push.getClientInfo().clientid;//客户端标识  
-		console.log(this.cid)
 		this.$nextTick(() => { });
 	},
 	// 数据更新时调用，发生在虚拟 DOM 打补丁之前。
