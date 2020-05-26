@@ -3,7 +3,9 @@ import Vue from "vue";
 
 export default {
   onLaunch: function() {
-    // uni.clearStorageSync();
+		// uni.clearStorageSync();
+		
+		
     if (!uni.getStorageSync("jwt")) {
       uni.reLaunch({
         url: "/pages/login/index"
@@ -11,9 +13,22 @@ export default {
     }
     const _handlePush = function(message) {
       // TODO
+
+      if (typeof message.payload == "string") {
+        message.payload = JSON.parse(message.payload);
+      }
       uni.navigateTo({
         url: message.payload.pagePath
       });
+      // uni.showModal({
+      //   title: "提示",
+      //   content: JSON.stringify(message.payload),
+      //   success: res => {
+      //     uni.navigateTo({
+      //       url: message.payload.pagePath
+      //     });
+      //   }
+      // });
     };
     plus.push.addEventListener("click", _handlePush);
     plus.push.addEventListener("receive", _handlePush);

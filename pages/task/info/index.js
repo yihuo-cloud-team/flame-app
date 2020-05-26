@@ -209,7 +209,7 @@ export default {
 			if (value == 5) {
 				return '申诉中'
 			} else {
-				return '立即申诉'
+				return '申诉'
 			}
 		},
 		sex(value) {
