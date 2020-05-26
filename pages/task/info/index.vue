@@ -163,11 +163,13 @@
         >{{info.task_state | dangerText}}</view>
       </template>
       <template v-if="info.is_owner==0">
-        <view
-          v-if="info.is_join==0"
-          class="btn"
-          @click="go(`/pages/enroll/index?id=${info.id}`)"
-        >参与项目</view>
+        <template v-if="info.task_state==2">
+          <view
+            v-if="info.is_join==0"
+            class="btn"
+            @click="go(`/pages/enroll/index?id=${info.id}`)"
+          >参与项目</view>
+        </template>
       </template>
     </view>
   </view>
