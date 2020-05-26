@@ -148,12 +148,15 @@ export default {
 				return false;
 			};
 			const res = await this.$http('/task/save', this.form);
+			console.log(res)
 			if (res.code >= 0) {
 				uni.showToast({
 					title: '操作成功',
 					icon: 'none'
 				})
-				this.go(`/pages/amount/deposit/index?price=${this.form.price}&&task_order=${res.data.task_order}`)
+				uni.redirectTo({
+					url: `/pages/amount/deposit/index?price=${this.form.price}&&task_order=${res.data.task_order}`,
+				})
 			} else {
 				uni.showToast({
 					title: res.msg,

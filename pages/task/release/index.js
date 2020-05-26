@@ -1,3 +1,4 @@
+import TaskCard from  '@/components/TaskCard/TaskCard.vue'
 export default {
   name: 'list',
   layout: 'sub',
@@ -22,6 +23,7 @@ export default {
     async updata() {
       this.loading = true
       const res = await this.$http('/task/my/list', this.query);
+	  console.log(res)
       if (res.code > 0) {
         this.list = [...this.list, ...res.data];
         this.query.page++;
@@ -111,5 +113,7 @@ export default {
   // 一个对象，键是需要观察的表达式，值是对应回调函数。
   watch: {},
   // 组件列表
-  components: {},
+  components: {
+	  TaskCard
+  },
 };
