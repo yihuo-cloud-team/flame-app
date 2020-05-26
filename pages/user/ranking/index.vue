@@ -72,13 +72,13 @@
             <view class="item" v-for="(item,index) in list" :key="index">
               <!-- <view class="left">{{index+1}}</view> -->
               <view class="left" v-if="index==0">
-                <img src="~/static/image/1.png" alt />
+                <image class="leftIcon" src="~/static/image/1.png" alt />
               </view>
               <view class="left" v-else-if="index==1">
-                <img src="~/static/image/2.png" alt />
+                <image class="leftIcon" src="~/static/image/2.png" alt />
               </view>
               <view class="left" v-else-if="index==2">
-                <img src="~/static/image/3.png" alt />
+                <image class="leftIcon" src="~/static/image/3.png" alt />
               </view>
               <view class="left" v-else><i>{{index+1}}</i></view>
 
