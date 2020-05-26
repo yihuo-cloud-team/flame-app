@@ -33,14 +33,32 @@
       <view class="times">
         <view class="title">查询时间</view>
         <view class="start">
-          <picker mode="date" @change="start" :value="form.times[0]">{{form.times[0]}}</picker>
+          <picker
+            mode="date"
+            @change="start"
+            start="1950-01-01"
+            end="2050-01-01"
+            :value="form.times[0]"
+          >{{form.times[0]}}</picker>
         </view>-
         <view class="end">
-          <picker mode="date" @change="end" :value="form.times[1]">{{form.times[1]}}</picker>
+          <picker
+            mode="date"
+            @change="end"
+            start="1950-01-01"
+            end="2050-01-01"
+            :value="form.times[1]"
+          >{{form.times[1]}}</picker>
         </view>
       </view>
       <view class="record-class">
-        <picker mode="selector" :range="typeClass" range-key="name" @change="typeChoice" :value="typeIndex">
+        <picker
+          mode="selector"
+          :range="typeClass"
+          range-key="name"
+          @change="typeChoice"
+          :value="typeIndex"
+        >
           {{typeClass[typeIndex].name}}
           <uni-icons type="arrowdown" style="margin-left: 5px;" size="14"></uni-icons>
         </picker>

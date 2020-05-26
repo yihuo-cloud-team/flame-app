@@ -66,11 +66,13 @@ export default {
 
     },
     start(e) {
-      this.$set(this.form.times, 0, e.detail.value)
+      this.form.times[0] = e.detail.value
+      // this.$set(this.form.times, 0, e.detail.value)
       this.resetupdata()
     },
     end(e) {
-      this.$set(this.form.times, 1, e.detail.value)
+      this.form.times[1] = e.detail.value
+      // this.$set(this.form.times, 1, e.detail.value)
       this.resetupdata()
     },
     onReachBottom() {

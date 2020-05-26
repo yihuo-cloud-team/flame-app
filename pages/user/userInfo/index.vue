@@ -14,11 +14,7 @@
         <uni-icons class="icons" type="camera" size="80" color="#fff"></uni-icons>
       </view>
       <view class="giass" v-else>
-        <img
-          class="img"
-          src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590171431919&di=2216bfaef1d6ec74fccfb25fcc5ab0f2&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F52%2F52%2F01200000169026136208529565374.jpg"
-          alt
-        />
+        <img class="img" src="~/static/image/logo.jpg" alt />
       </view>
     </view>
 
