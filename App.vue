@@ -3,7 +3,7 @@ import Vue from 'vue';
 
 export default {
 	onLaunch: function() {
-		uni.clearStorageSync();
+		// uni.clearStorageSync();
 		if (!uni.getStorageSync('jwt')) {
 			uni.reLaunch({
 				url: '/pages/login/index'
