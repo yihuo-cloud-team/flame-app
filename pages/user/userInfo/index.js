@@ -42,12 +42,20 @@ export default {
 			uni.navigateTo({
 				url: url
 			})
+		},
+		async message() {
+			const res = await this.$http('/chat/link', {
+				target_id: this.id
+			});
+			uni.navigateTo({
+				url: `/pages/chat/index?room_id=${res.data}`
+			});
 		}
+			
 	},
 	onLoad(option) {
 		this.id = option.id;
 		this.user_id = JSON.parse(uni.getStorageSync('userInfo')).id
-
 	},
 	onShow() {
 		this.update();

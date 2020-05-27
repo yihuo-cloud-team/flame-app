@@ -1,6 +1,5 @@
 {
-	"pages": [
-		{
+	"pages": [{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "益火TKI",
@@ -14,13 +13,11 @@
 				"navigationBarTitleText": "任务详情",
 				"app-plus": {
 					"titleNView": {
-						"buttons": [
-							{
-								"text": "\ue603",
-								"fontSrc": "/static/iconfont.ttf",
-								"fontSize": "22px"
-							}
-						]
+						"buttons": [{
+							"text": "\ue603",
+							"fontSrc": "/static/iconfont.ttf",
+							"fontSize": "22px"
+						}]
 					}
 				}
 			}
@@ -182,6 +179,18 @@
 			"style": {
 				"navigationBarTitleText": "帮助说明"
 			}
+		},
+		{
+			"path": "pages/chat/room/index",
+			"style": {
+				"navigationBarTitleText": "消息列表"
+			}
+		},
+		{
+			"path": "pages/chat/index",
+			"style": {
+				"navigationBarTitleText": "聊天房"
+			}
 		}
 	],
 	"globalStyle": {
@@ -195,8 +204,7 @@
 		"selectedColor": "#4289db",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/home/index",
 				"iconPath": "static/image/home.png",
 				"selectedIconPath": "static/image/home_HL.png",
@@ -208,6 +216,12 @@
 				"selectedIconPath": "static/image/dynamic_HL.png",
 				"text": "动态"
 			},
+			// {
+			// 	"pagePath": "pages/chat/room/index",
+			// 	"iconPath": "static/image/chat.png",
+			// 	"selectedIconPath": "static/image/chat_HL.png",
+			// 	"text": "消息列表"
+			// },
 			{
 				"pagePath": "pages/user/info/index",
 				"iconPath": "static/image/user.png",
