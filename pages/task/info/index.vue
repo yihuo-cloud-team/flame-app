@@ -30,10 +30,10 @@
               <view class="cu-tag line-green" v-else>招募中</view>
             </view>
             <view class="padding-xs" v-if="info.task_state == 3">
-              <view
-                class="cu-tag line-green"
-                v-if="userInfo.id != info.join_user && info.is_owner == 0"
-              >未被选中</view>
+              <view v-if="userInfo.id != info.join_user && info.is_owner == 0">
+                <view class="cu-tag line-green" v-if="info.is_join == 2">未被选中</view>
+                <view class="cu-tag line-green" v-else>未参与</view>
+              </view>
               <view class="cu-tag line-green" v-else>进行中</view>
             </view>
             <view class="padding-xs" v-if="info.task_state == 4">
