@@ -43,8 +43,6 @@ export default {
 			}
 		},
 		async apply() {
-			console.warn(1);
-
 			const res = await this.$http('/task/applyList', this.query);
 			if (res.code > 0) {
 				this.list = [...this.list, ...res.data];
