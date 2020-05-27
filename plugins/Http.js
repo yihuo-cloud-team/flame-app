@@ -25,6 +25,12 @@ let Http = async function(url, data) {
 				Authorization: to(config)
 			},
 		});
+		if(res.statusCode==401){
+			uni.reLaunch({
+			  url: "/pages/login/index"
+			});
+			return
+		}
 		return res.data
 	}
 	catch(e){
