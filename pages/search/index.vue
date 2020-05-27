@@ -8,7 +8,7 @@
       <simple-address
         type="bottom"
         ref="simpleAddress"
-        :pickerValueDefault="citycode"
+        :pickerValueDefault="cityindex"
         @onConfirm="choiceCity"
         themeColor="#4289db"
       ></simple-address>

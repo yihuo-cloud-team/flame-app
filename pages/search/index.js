@@ -8,6 +8,7 @@ export default {
       finished: false,
       district: '暂无定位',
       citycode: [],
+      cityindex: [],
       query: {
         search: '',
         page: 1,
@@ -107,7 +108,7 @@ export default {
     openCity() {
       // var index = this.$refs.simpleAddress.queryIndex([13, 1302, 130203], 'value');
       var index = this.$refs.simpleAddress.queryIndex(this.citycode, 'label');
-      this.citycode = index.index;
+      this.cityindex = index.index;
       this.$refs.simpleAddress.open();
     },
     go(url) {
