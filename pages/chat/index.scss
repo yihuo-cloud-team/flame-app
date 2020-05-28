@@ -112,7 +112,11 @@
             }
         }
 
-        .btn-box {}
+        .btn-box {
+			border: 100%;
+			overflow: hidden;
+			height: 46px;
+		}
     }
 	.head_img{
 		height: 50px;
@@ -120,5 +124,4 @@
 		border-radius: 25px;
 	}
 }
-
 #msg /deep/ {}

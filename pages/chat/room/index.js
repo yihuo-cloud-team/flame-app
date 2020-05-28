@@ -13,9 +13,9 @@ export default {
 		// 用于初始化一些数据
 		init() {
 
-			this.time = setInterval(() => {
-				this.update();
-			}, 3000);
+			// this.time = setInterval(() => {
+			// 	this.update();
+			// }, 3000);
 
 			this.update();
 		},

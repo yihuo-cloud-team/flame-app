@@ -1,6 +1,6 @@
 <template>
 	<view id="msg">
-		<view class="msg-list-panel" ref="msg-box">
+		<view class="msg-list-panel" ref="msgBox">
 			<view class="text-center" style="padding:10px">
 				<!-- <loading size="24px" v-if="loadingOld">加载中...</loading> -->
 				<view class="cu-load" v-if="loadingOld" :class="loadingOld ? 'loading' : 'over'"></view>
@@ -32,11 +32,10 @@
 			<view class="input-box"><input type="text" v-model="msg" /></view>
 			<view class="btn-box">
 				<button size="normal" :disabled="isSendLoading" v-if="msg.length > 0" round @click="sendText">发送</button>
-				<!-- <button size="normal" :disabled="isSendLoading" round @click="sendImage">
+				<button size="normal" :disabled="isSendLoading" round @click="chooseImage">
 					<text class="lg text-gray cuIcon-cameraadd"></text>
-				</button> -->
-				<sunui-upimg :disabled="isSendLoading" v-if="msg.length == 0" @change="sendImage" :upload_auto="true" ref="upimg1" :upload_count="2"></sunui-upimg>
-
+				</button>
+				<!-- <sunui-upimg :disabled="isSendLoading" class="update-btn" upload_img_wh='46' v-if="msg.length == 0" @change="sendImage" :upload_auto="true" :upload_count='1'></sunui-upimg> -->
 			</view>
 		</view>
 	</view>

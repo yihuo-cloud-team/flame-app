@@ -1,3 +1,4 @@
+import Upload from "../../plugins/Upload";
 export default {
 	name: 'msg',
 	layout: 'sub',
@@ -23,9 +24,9 @@ export default {
 	methods: {
 		// 用于初始化一些数据
 		init() {
-			this.time = setInterval(() => {
-				this.update();
-			}, 3000);
+			// this.time = setInterval(() => {
+			// 	this.update();
+			// }, 3000);
 
 			this.update();
 		},
@@ -38,13 +39,17 @@ export default {
 			if (res.code > 0) {
 				this.query.page++;
 				this.list = [...res.data, ...this.list];
+				// this.$refs.msg-box.scrollTop = this.$refs.msg-box.scrollHeight;
 			}
+			
+			
+			
 		},
 
 		// 用于更新一些数据
 		async update() {
 			const res = await this.$http('/chat/room/content/list', {
-				room_id: this.room_id, //收件人
+				room_id: this.query.room_id, //收件人
 				page: 1,
 				page_size: 10
 			});
@@ -55,10 +60,19 @@ export default {
 				await this.$nextTick(() => {});
 			}
 			this.total = res.total;
+			
+			setTimeout(()=>{
+				console.log(this.$refs,this.$refs.msgBox,this.$refs.msgBox.$el.style)
+				this.$nextTick(() =>{
+					console.log(this.$refs.msgBox);
+					this.$refs.msgBox.scrollTop = this.$refs.msgBox.scrollHeight;
+					// console.log(this.$refs.msgBox.scrollTop,this.$refs.msgBox.scrollHeight)
+				})
+			},2000)
 		},
 		updateInit() {
 			this.query = {
-				room_id: this.room_id, //收件人
+				room_id: this.query.room_id, //收件人
 				page: 2,
 				page_size: 10
 			};
@@ -70,7 +84,7 @@ export default {
 			}
 			this.isSendLoading = true;
 			const res = await this.$http('/chat/send', {
-				room_id: this.room_id,
+				room_id: this.query.room_id,
 				msg: this.msg,
 				msg_type: 1 //文字类型，2为图片类型
 			});
@@ -80,9 +94,10 @@ export default {
 			this.update();
 		},
 		async sendImage(url) {
+			console.log(1)
 			this.isSendLoading = true;
 			const res = await this.$http('/chat/send', {
-				room_id: this.room_id,
+				room_id: this.query.room_id,
 				msg: url,
 				msg_type: 2 //文字类型，2为图片类型
 			});
@@ -90,6 +105,11 @@ export default {
 			this.updateInit()
 			this.url = '';
 			this.update();
+		},
+		async chooseImage(){
+			const file = await Upload.select();
+			const res = await Upload.send(file);
+			this.sendImage(res.data.url)
 		}
 	},
 	onLoad(option) {

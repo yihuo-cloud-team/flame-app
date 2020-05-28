@@ -275,9 +275,7 @@ const upload = function(options) {
 
 .sunui-uploader-inputbox {
 	position: relative;
-	margin-bottom: 16rpx;
 	box-sizing: border-box;
-	background-color: #ededed;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -326,7 +324,6 @@ const upload = function(options) {
 }
 
 .sunui-uploader-bd {
-	padding: 26rpx;
 	margin: 0;
 }
 
