@@ -32,9 +32,10 @@
 			<view class="input-box"><input type="text" v-model="msg" /></view>
 			<view class="btn-box">
 				<button size="normal" :disabled="isSendLoading" v-if="msg.length > 0" round @click="sendText">发送</button>
-				<button size="normal" :disabled="isSendLoading" v-if="msg.length == 0" round @click="sendText">
+				<!-- <button size="normal" :disabled="isSendLoading" round @click="sendImage">
 					<text class="lg text-gray cuIcon-cameraadd"></text>
-				</button>
+				</button> -->
+				<sunui-upimg :disabled="isSendLoading" v-if="msg.length == 0" @change="sendImage" :upload_auto="true" ref="upimg1" :upload_count="2"></sunui-upimg>
 
 			</view>
 		</view>

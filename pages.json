@@ -216,12 +216,12 @@
 				"selectedIconPath": "static/image/dynamic_HL.png",
 				"text": "动态"
 			},
-			{
-				"pagePath": "pages/chat/room/index",
-				"iconPath": "static/image/chat.png",
-				"selectedIconPath": "static/image/chat_HL.png",
-				"text": "消息列表"
-			},
+			// {
+			// 	"pagePath": "pages/chat/room/index",
+			// 	"iconPath": "static/image/chat.png",
+			// 	"selectedIconPath": "static/image/chat_HL.png",
+			// 	"text": "消息列表"
+			// },
 			{
 				"pagePath": "pages/user/info/index",
 				"iconPath": "static/image/user.png",

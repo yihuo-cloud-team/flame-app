@@ -1,8 +1,8 @@
 <template>
   <view id="telLogin">
     <div class="head-box">
-      <img src="~/static/image/logo.jpg" class="logo" alt />
-      <!-- <image mode="aspectFill" :src="$getUrl(item.img)" /> -->
+      <!-- <img src="~/static/image/logo.jpg" class="logo" alt /> -->
+      <image  mode="aspectFill" class="logo" src="~/static/image/logo.jpg" />
       <view class="title">欢迎登陆益火TKI</view>
     </div>
     <div class="form-box">

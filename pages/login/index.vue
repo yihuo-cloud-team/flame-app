@@ -9,9 +9,9 @@
       <div class="mod-item" @click="wxLogin()">
         <uni-icons color="#fff" type="weixin" size="30"></uni-icons>
       </div>
-      <!-- <div class="mod-item" @click="go('/pages/login/telLogin/index')">
+      <div class="mod-item" @click="go('/pages/login/telLogin/index')">
         <uni-icons color="#fff" type="phone" size="30"></uni-icons>
-      </div> -->
+      </div>
     </view>
 
     <view class="checked-box">

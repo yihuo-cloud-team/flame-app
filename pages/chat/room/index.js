@@ -24,7 +24,7 @@ export default {
 			this.loading = true;
 			const res = await this.$http('/chat/room/list', {});
 			this.loading = false;
-
+			console.log(res)
 			let local = this.list.map(el => ({
 				room_id: el.room_id,
 				total: el.total
@@ -54,11 +54,9 @@ export default {
 
 			});
 
-			localStorage.readRoomIdList = JSON.stringify(this.readRoomIdList);
-
+			uni.setStorageSync('readRoomIdList', JSON.stringify(this.readRoomIdList));
 			this.list = res.data;
 			this.total = res.total;
-			console.log(this.list)
 		},
 		isNoCount(room_id) {
 			return true;
@@ -92,10 +90,10 @@ export default {
 	// el 被新创建的 vm.el 替换，并挂载到实例上去之后调用该钩子。
 	mounted() {
 		this.init();
-		if (typeof localStorage.readRoomIdList == 'undefined') {
+		if (typeof uni.getStorageSync('readRoomIdList') == 'undefined') {
 
 		} else {
-			this.readRoomIdList = JSON.parse(localStorage.readRoomIdList);
+			this.readRoomIdList = JSON.parse(uni.getStorageSync('readRoomIdList'));
 		}
 
 		this.$nextTick(() => {});
@@ -108,7 +106,7 @@ export default {
 	deactivated() {},
 	// 实例销毁之前调用。在这一步，实例仍然完全可用。
 	beforeDestroy() {
-		localStorage.readRoomIdList = JSON.stringify(this.readRoomIdList);
+		uni.setStorageSync('readRoomIdList', JSON.stringify(this.readRoomIdList));
 		clearInterval(this.time)
 	},
 	//Vue 实例销毁后调用。

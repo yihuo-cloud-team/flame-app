@@ -42,9 +42,9 @@
 			</view>
 		</view>
 		
-		<div class="fb">
+		<!-- <div class="fb">
 		  <button  type="primary" @click="message" v-if="user_id != userInfo.id">发消息</button>
-		</div>
+		</div> -->
 	</view>
 </template>
 <script src="./index.js"></script>
