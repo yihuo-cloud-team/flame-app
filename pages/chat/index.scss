@@ -24,14 +24,10 @@
 
                         .user-head {}
                     }
-
-
-
                     .message-box {
                         text-align: right;
                     }
                 }
-
 
 
                 &.left {
@@ -42,9 +38,6 @@
                         color: #333;
                     }
                 }
-
-
-
             }
 
             .user-info-box {
@@ -92,7 +85,7 @@
         padding: 10px;
         background-color: #ffffff;
         display: flex;
-
+		height: 60px;
         align-items: center;
 
         .input-box {

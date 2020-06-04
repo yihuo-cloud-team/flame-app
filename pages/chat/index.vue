@@ -1,6 +1,6 @@
 <template>
 	<view id="msg">
-		<view class="msg-list-panel" ref="msgBox">
+		<scroll-view class="msg-list-panel" :scroll-y='true' :scroll-top="scrollTop" ref="msgBox" @scroll='scroll'>
 			<view class="text-center" style="padding:10px">
 				<!-- <loading size="24px" v-if="loadingOld">加载中...</loading> -->
 				<view class="cu-load" v-if="loadingOld" :class="loadingOld ? 'loading' : 'over'"></view>
@@ -27,7 +27,7 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</scroll-view>
 		<view class="tool-panel">
 			<view class="input-box"><input type="text" v-model="msg" /></view>
 			<view class="btn-box">

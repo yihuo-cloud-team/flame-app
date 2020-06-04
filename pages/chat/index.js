@@ -19,18 +19,30 @@ export default {
 			loadingOld: false,
 			isSendLoading: false,
 			url: '',
+			style: {
+				pageHeight: 0,
+				contentViewHeight: 0,
+				footViewHeight: 90,
+				mitemHeight: 0
+			},
+			scrollTop: 0,
 		};
 	},
 	methods: {
 		// 用于初始化一些数据
 		init() {
-			// this.time = setInterval(() => {
-			// 	this.update();
-			// }, 3000);
-
+			this.time = setInterval(() => {
+				this.update();
+			}, 3000);
 			this.update();
-		},
 
+			setTimeout(() => {
+				this.$nextTick(() => {
+					this.scrollToBottom();
+				})
+			}, 200)
+
+		},
 		async updateOld() {
 			this.loadingOld = true;
 			const res = await this.$http('/chat/room/content/list', this.query);
@@ -39,13 +51,15 @@ export default {
 			if (res.code > 0) {
 				this.query.page++;
 				this.list = [...res.data, ...this.list];
-				// this.$refs.msg-box.scrollTop = this.$refs.msg-box.scrollHeight;
+				this.scrollToOld();
 			}
-			
-			
-			
 		},
-
+		scroll(e) {
+			// this.scrollTop = e.detail.scrollTop;
+			if (e.detail.scrollTop === 0) {
+				this.updateOld();
+			}
+		},
 		// 用于更新一些数据
 		async update() {
 			const res = await this.$http('/chat/room/content/list', {
@@ -55,20 +69,50 @@ export default {
 			});
 			await this.$nextTick(() => {});
 			if (this.total != res.total) {
-				this.updateInit()
+				this.updateInit();
 				this.list = res.data;
 				await this.$nextTick(() => {});
 			}
 			this.total = res.total;
-			
-			setTimeout(()=>{
-				console.log(this.$refs,this.$refs.msgBox,this.$refs.msgBox.$el.style)
-				this.$nextTick(() =>{
-					console.log(this.$refs.msgBox);
-					this.$refs.msgBox.scrollTop = this.$refs.msgBox.scrollHeight;
-					// console.log(this.$refs.msgBox.scrollTop,this.$refs.msgBox.scrollHeight)
+		},
+		scrollToOld: function() {
+			this.$nextTick(() => {
+				const res = uni.getSystemInfoSync(); //获取手机可使用窗口高度     api为获取系统信息同步接口
+				this.style.contentViewHeight = res.windowHeight - uni.getSystemInfoSync().screenWidth / 750 * (100) - 70; //像素   因为给出的是像素高度 然后我们用的是upx  所以换算一下 
+				let that = this;
+				let query = uni.createSelectorQuery();
+				query.selectAll('.msg-card').boundingClientRect();
+				query.select('.msg-list-panel').boundingClientRect();
+				query.exec((res) => {
+					that.style.mitemHeight = 0;
+					res[0].forEach((rect, i) => {
+						if (i < that.query.page_size) {
+							that.style.mitemHeight = that.style.mitemHeight + rect.height
+						}
+					}) //获取所有内部子元素的高度
+					if (that.style.mitemHeight > (that.style.contentViewHeight - 100)) { //判断子元素高度是否大于显示高度
+						that.scrollTop = that.style.mitemHeight - that.style.contentViewHeight //用子元素的高度减去显示的高度就获益获得序言滚动的高度
+					}
 				})
-			},2000)
+			})
+		},
+		scrollToBottom: function() {
+			this.$nextTick(() => {
+				const res = uni.getSystemInfoSync(); //获取手机可使用窗口高度     api为获取系统信息同步接口
+				this.style.pageHeight = res.windowHeight;
+				this.style.contentViewHeight = res.windowHeight - uni.getSystemInfoSync().screenWidth / 750 * (100) - 70; //像素   因为给出的是像素高度 然后我们用的是upx  所以换算一下 
+				let that = this;
+				let query = uni.createSelectorQuery();
+				query.selectAll('.msg-card').boundingClientRect();
+				query.select('.msg-list-panel').boundingClientRect();
+				query.exec((res) => {
+					that.style.mitemHeight = 0;
+					res[0].forEach((rect) => that.style.mitemHeight = that.style.mitemHeight + rect.height) //获取所有内部子元素的高度
+					if (that.style.mitemHeight > (that.style.contentViewHeight - 100)) { //判断子元素高度是否大于显示高度
+						that.scrollTop = that.style.mitemHeight - that.style.contentViewHeight //用子元素的高度减去显示的高度就获益获得序言滚动的高度
+					}
+				})
+			})
 		},
 		updateInit() {
 			this.query = {
@@ -92,9 +136,13 @@ export default {
 			this.updateInit()
 			this.msg = '';
 			this.update();
+			setTimeout(() => {
+				this.$nextTick(() => {
+					this.scrollToBottom();
+				})
+			}, 200)
 		},
 		async sendImage(url) {
-			console.log(1)
 			this.isSendLoading = true;
 			const res = await this.$http('/chat/send', {
 				room_id: this.query.room_id,
@@ -105,8 +153,13 @@ export default {
 			this.updateInit()
 			this.url = '';
 			this.update();
+			setTimeout(() => {
+				this.$nextTick(() => {
+					this.scrollToBottom();
+				})
+			}, 200)
 		},
-		async chooseImage(){
+		async chooseImage() {
 			const file = await Upload.select();
 			const res = await Upload.send(file);
 			this.sendImage(res.data.url)

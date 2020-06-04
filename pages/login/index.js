@@ -33,10 +33,10 @@ export default {
 							let userInfo = infoRes.userInfo;
 							this.cid = plus.push.getClientInfo().clientid;//客户端标识
 							userInfo.cid = this.cid;
-							console.log(userInfo)
 							const res = await _this.$http('/auth/app_wx_login', userInfo);
 							if (res.code >= 1) {
 								uni.setStorageSync('jwt', res.jwt);
+								uni.setStorageSync('cid', this.cid);
 								uni.setStorageSync('userInfo', JSON.stringify(res.data));
 								uni.reLaunch({
 									url: '/pages/home/index',

@@ -29,7 +29,8 @@ export default {
 		async submit() {
 			const res = await this.$http('/auth/app_login', {
 				phone: this.phone,
-				code: this.code
+				code: this.code,
+				cid:plus.push.getClientInfo().clientid,
 			});
 			if (res.code >= 1) {
 				uni.setStorageSync('jwt', res.jwt);
