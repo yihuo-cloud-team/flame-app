@@ -9,10 +9,11 @@ export default {
 				url: '/pages/login/index'
 			});
 		} else {
-			if (uni.getStorageSync('cid') != '' && uni.getStorageSync('cid') != 'undefined' && uni.getStorageSync('cid') != 'null')
+			if (uni.getStorageSync('cid') != '' && uni.getStorageSync('cid') != 'undefined' && uni.getStorageSync('cid') != 'null'){
 				this.$http('/user/save', {
 					cid: plus.push.getClientInfo().clientid
 				});
+			}
 		}
 		const _handlePush = function(message) {
 			// TODO
